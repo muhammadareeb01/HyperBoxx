@@ -1,0 +1,844 @@
+.referral_main {
+    width: 100%;
+    background-color: #15191c;
+    padding: 20px 0px;
+    /* height: 100vh; */
+    padding-bottom: 200px;
+    font-weight: 300;
+}
+
+.referral-heading-container {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    justify-content: center;
+    width: 50%;
+    /* Adjust the width as needed */
+    margin: 50px auto;
+}
+
+
+.thin-line-left {
+    flex: 1;
+    height: 1.0px;
+    background: linear-gradient(to right, transparent, hsl(2, 98%, 60%));
+    /* Adjust gradient colors as needed */
+}
+
+.thin-line-right {
+    flex: 1;
+    height: 1.0px;
+    background: linear-gradient(to left, transparent, hsl(2, 98%, 60%));
+    /* Adjust gradient colors as needed */
+}
+
+.list-items-heading {
+    margin: 0 20px;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: PoppinsBold;
+}
+
+
+
+/*  */
+
+.referral_box {
+    width: 80%;
+    /* background-image: url('../../assestes/deposit/despositeBG.png'); */
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(31, 33, 34, 0.78);
+    /* height: 50vh; */
+    margin: 4% auto;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0px 100px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    /* Add a padding for the second border */
+    padding: 20px;
+}
+
+.referral_box::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 20px;
+
+    /* Adjust the border thickness and color */
+    border: 4px solid rgba(255, 255, 255, 0.1);
+
+    /* Make sure the second border is behind the content */
+    z-index: -1;
+}
+
+
+.referral_div1 {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 90%;
+    background-color: #15191c;
+}
+
+.referral_div2 {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 90%;
+    margin: 3% auto;
+    /* background-color: #15191c; */
+}
+
+.referral_div1 h3 {
+    color: white;
+}
+
+.referral_div3 {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-around;
+    margin: auto;
+    width: calc(90% - 10px);
+    /* width: 90%; */
+    margin: 3% auto;
+    background-color: #15191c;
+}
+
+.referral_div3>div {
+    /* width: 0%; */
+}
+
+.referral_div4 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 90%;
+    margin: 3% auto;
+    background-color: #15191c;
+}
+
+
+.ref_left_div,
+.ref_right_div {
+    padding: 10px;
+    display: flex;
+}
+
+.ref_gift_div {
+    /* margin-top:15px; */
+    padding: 5px;
+
+}
+
+.ref_left_div_inputs {
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.ref_right_div_inputs {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.ref_left_div>div,
+.ref_right_div>div {
+    padding-right: 20px;
+}
+
+.ref_left_div>div>h3,
+.ref_right_div>div>h3 {
+    font-size: 23px;
+    font-family: 'PoppinsRegular';
+}
+
+.ref_left_div>div>p,
+.ref_right_div>div>p {
+    font-size: 13px;
+    font-family: 'PoppinsLight';
+}
+
+.giftbox {
+    width: 100%;
+    height: 100px;
+}
+
+.announce {
+    width: 100%;
+    height: 50px;
+}
+
+
+.profit {
+    height: 100px;
+    width: 100%;
+}
+
+
+
+/* ref code input */
+.ref_code_input {
+    position: relative;
+    display: flex;
+    width: 100%;
+    /* background-color: #15191c; */
+    max-width: 290px;
+}
+
+.ref_code_input>span,
+.ref_code_input .code_input {
+    white-space: nowrap;
+    display: block;
+}
+
+.ref_code_input>span,
+.ref_code_input .code_input:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.ref_code_input>span,
+.ref_code_input .code_input {
+    border-radius: 0 6px 6px 0;
+}
+
+.ref_code_input>span,
+.ref_code_input .code_input {
+    margin-left: -1px;
+}
+
+.ref_code_input .code_input {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.ref_code_input span {
+    text-align: center;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #15191c;
+    font-family: PoppinsLight;
+    background: hsl(0, 18%, 81%);
+    border: 1px solid #CDD9ED;
+    font-weight: bold;
+    transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
+}
+
+.ref_code_input:focus-within>span {
+    color: #fff;
+    background-color: hsl(2, 98%, 60%);
+    ;
+    border-color: hsl(2, 98%, 60%);
+    ;
+}
+
+.code_input {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    border: 1px solid #CDD9ED;
+    background: #15191c;
+    transition: border 0.3s ease;
+}
+
+.code_input::placeholder {
+    color: #CBD1DC;
+}
+
+.code_input:focus {
+    outline: none;
+    /* background-color:  */
+    border-color: hsl(2, 98%, 60%);
+}
+
+
+/* code input div */
+
+.ref_input_div>p {
+    padding-bottom: 10px;
+}
+
+/* link ref */
+.form-control-ref {
+    position: relative;
+    margin: 20px 40px;
+    width: 190px;
+}
+
+.form-control-ref input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+input {
+    color: #FFF;
+}
+
+.form-control-ref input:focus,
+.form-control-ref input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control-ref label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control-ref label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    color: #fff;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control-ref input:focus+label span,
+.form-control-ref input:valid+label span {
+    color: #FFDF00;
+    transform: translateY(-30px);
+}
+
+
+
+/* cop link  */
+.copy_link>p {
+    font-size: 13px;
+    padding-right: 10px;
+    font-family: 'PoppinsLight';
+}
+
+.copy_link {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    /* justify-content: space-between; */
+    text-align: center;
+}
+
+.copy_link_input {
+    background-color: #15191c;
+    border: none;
+
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+
+    font-family: inherit;
+    border-radius: 6px;
+    color: #646464;
+    /* padding: 0.7rem 1rem; */
+    /* border-radius: 30px; */
+    width: 15em;
+    transition: all ease-in-out .5s;
+    margin-right: -2rem;
+}
+
+.copy_link_input:hover,
+.copy_link_input:focus {
+    box-shadow: 0 0 1em #00000013;
+}
+
+.copy_link_input:focus {
+    outline: none;
+    /* background-color: #f0eeee; */
+}
+
+.copy_link_input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+}
+
+.copy_link_input:focus+.copy_button {
+    /* background-color: #f0eeee; */
+    color: white;
+}
+
+.copy_button {
+    border: none;
+    background-color: #15191c;
+    color: #646464;
+    /* margin-top: .1em; */
+}
+
+.copy_button:hover {
+    cursor: pointer;
+}
+
+.search__icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #b4b4b4;
+}
+
+
+/* user ref input  */
+.form-control {
+    position: relative;
+    margin: 0px 5px 40px;
+    width: 190px;
+
+}
+
+.input-refree {
+
+    height: 10px;
+
+    width: 100%;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    background-color: none !important;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #15191c;
+    /* color: #fff; */
+}
+
+
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control label {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    color: #000;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+.form-control input:focus+label span,
+.form-control input:valid+label span {
+    color: #FFF;
+    font-weight: 600;
+    transform: translateY(-50px);
+
+}
+
+
+.user,
+.wallet,
+.coin {
+    color: white;
+    font-size: 25px;
+}
+
+.coiny {
+    color: #FFDF00;
+    font-size: 25px;
+}
+
+span {
+    font-family: PoppinsLight;
+}
+
+
+
+
+/* earning claun btn  */
+
+.btn_earning {
+    margin: auto;
+
+
+}
+
+.btn_earning>button {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+
+/* earning btn  */
+.earning_button {
+    margin-top: 10% !important;
+    position: relative;
+    width: 15em;
+    height: 3em;
+    outline: none;
+    align-items: center;
+    transition: 0.1s;
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    margin: auto;
+    color: #ddebf0;
+
+}
+
+#clip {
+    --color: #15191c;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    border: 5px double var(--color);
+    box-shadow: inset 0px 0px 15px #242a2e;
+    -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.arrow {
+    position: absolute;
+    transition: 0.2s;
+    background-color: #242a2e;
+    top: 35%;
+    width: 11%;
+    height: 30%;
+}
+
+#leftArrow {
+    left: -8.5%;
+    top: 35%;
+    -webkit-clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+#rightArrow {
+    -webkit-clip-path: polygon(100% 49%, 0 0, 0 100%);
+    left: 97.5%;
+    top: 35%;
+}
+
+.earning_button:hover #rightArrow {
+
+    background-color: hsl(2, 98%, 60%);
+    left: -15%;
+    animation: 0.6s ease-in-out both infinite alternate rightArrow8;
+}
+
+.earning_button:hover #leftArrow {
+    background-color: hsl(2, 98%, 60%);
+    left: 103%;
+    animation: 0.6s ease-in-out both infinite alternate leftArrow8;
+}
+
+.corner {
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    background-color: #242a2e;
+    box-shadow: inset 1px 1px 8px #242a2e;
+    transform: scale(1) rotate(45deg);
+    transition: 0.2s;
+}
+
+#rightTop {
+    top: -1.98em;
+    left: 91%;
+}
+
+#leftTop {
+    top: -1.96em;
+    left: -3.0em;
+}
+
+#leftBottom {
+    top: 2.10em;
+    left: -2.15em;
+}
+
+#rightBottom {
+    top: 45%;
+    left: 88%;
+}
+
+.earning_button:hover #leftTop {
+    animation: 0.1s ease-in-out 0.05s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+}
+
+.earning_button:hover #rightTop {
+    animation: 0.1s ease-in-out 0.15s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+}
+
+.earning_button:hover #rightBottom {
+    animation: 0.1s ease-in-out 0.25s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+}
+
+.earning_button:hover #leftBottom {
+    animation: 0.1s ease-in-out 0.35s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+}
+
+.earning_button:hover .corner {
+    transform: scale(1.25) rotate(45deg);
+}
+
+.earning_button:hover #clip {
+    animation: 0.2s ease-in-out 0.55s both greenLight8;
+    --color: hsl(2, 98%, 60%);
+}
+
+@keyframes changeColor8 {
+    from {
+
+        background-color: hsl(2, 98%, 60%);
+    }
+
+    to {
+
+        background-color: hsl(2, 98%, 60%);
+    }
+
+}
+
+@keyframes lightEffect8 {
+    from {
+
+
+        box-shadow: 1px 1px 5px hsl(2, 98%, 60%);
+    }
+
+    to {
+        box-shadow: 0 0 2px hsl(2, 98%, 60%);
+    }
+}
+
+@keyframes greenLight8 {
+    from {}
+
+    to {
+        box-shadow: inset 0px 0px 32px hsl(2, 98%, 60%);
+    }
+}
+
+@keyframes leftArrow8 {
+    from {
+        transform: translate(0px);
+    }
+
+    to {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes rightArrow8 {
+    from {
+        transform: translate(0px);
+    }
+
+    to {
+        transform: translateX(-10px);
+    }
+}
+
+
+@media screen and (max-width:800px) {
+
+
+
+    .ref_text_div h3 {
+        font-size: 15px !important;
+    }
+
+    .ref_text_div p,
+    .copy_link p {
+        font-size: 12px !important;
+    }
+
+    .copy_link p,
+    .ref_input_div p {
+        /* width: 100%; */
+        font-size: 10px !important;
+    }
+
+    .copy_link {
+        margin-top: 15px;
+        /* flex-direction: column !important; */
+        align-items: center;
+    }
+
+    .copy_link_input {
+
+        width: 10em;
+    }
+
+
+
+    .code_input {
+        display: block;
+        padding: 5px 10px;
+        line-height: 20px;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width:600px) {
+    .form-control {
+
+        width: 200px !important;
+
+    }
+
+    .ref_left_div,
+    .ref_right_div_gift {
+        width: 100% !important;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .giftbox,
+    .profit {
+        width: 100%;
+        height: 70px;
+    }
+
+    .ref_left_div h3,
+    .ref_right_div h3 {
+        font-size: 15px !important;
+    }
+
+    .ref_left_div p,
+    .ref_right_div p {
+        font-size: 12px !important;
+    }
+
+    .ref_left_div>div,
+    .ref_right_div>div {
+        padding-right: 5px;
+    }
+
+    .user,
+    .wallet,
+    .coin {
+
+        font-size: 22px;
+    }
+
+    .form-control input {
+
+        font-size: 15px;
+    }
+
+
+}
+
+@media screen and (max-width:500px) {
+
+
+
+    .copy_link p,
+    .ref_input_div p,
+    .ref_text_div p,
+    .ref_code_input span {
+        /* width: 100%; */
+        font-size: 9px !important;
+    }
+
+
+
+}
+
+
+@media screen and (max-width:500px) {
+
+    .ref_gift_div,
+    .ref_code_input,
+    .ref_text_div_inputs .ref_div_flex,
+    .claimining-div {
+        width: 100% !important;
+        margin: 5% auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .referral_div1,
+    .referral_div2 {
+        flex-direction: column !important;
+    }
+}
+
+
+
+@media screen and (max-width:450px) {
+    .form-control {
+
+        width: 150px !important;
+
+    }
+}
+
+
+@media screen and (max-width:350px) {
+    .form-control {
+
+        width: 120px !important;
+
+    }
+
+    .ref_code_input span {
+
+        line-height: 15px;
+    }
+
+    .form-control span {
+        font-size: 8px !important;
+    }
+
+    .copy_link p,
+    .ref_input_div p,
+    .ref_text_div p,
+    .ref_code_input span {
+        /* width: 100%; */
+        font-size: 8px !important;
+    }
+
+}

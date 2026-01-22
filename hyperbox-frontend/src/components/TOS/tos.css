@@ -1,0 +1,175 @@
+.tos_main {
+
+    width: 100% !important;
+    /* background: url("../../assestes/faq/background.jpg"); */
+    background-color: #15191c;
+    /* margin-bottom: 200px; */
+    border: none !important;
+    padding: 20px 0px;
+    /* margin-top: 20px; */
+    /* padding: 200px 0px ; */
+    padding-bottom: 200px;
+    font-weight: 300 !important;
+    overflow: hidden;
+
+}
+
+.tos_sub_main {
+    background-color: #2d3334;
+    width: 80%;
+    border: 1px solid white;
+
+
+    margin: auto;
+    padding-bottom: 3%;
+    margin-top: 2%;
+    /* border-bottom-right-radius: 35% 68%; */
+    /* border-radius: 30% 70% 0% 100% / 35% 27% 73% 65% ; */
+    border-radius: 20px;
+}
+
+.tos_head {
+    text-align: center;
+    color: white;
+    opacity: 0.6;
+    font-family:'Poppins';
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    padding: 20px 0px;
+    word-spacing: 1.1rem;
+    letter-spacing: 0.1em;
+    /* -webkit-text-fill-color: transparent; */
+    /* -webkit-text-stroke-width: 0.5px; */
+    /* -webkit-text-stroke-color: #FFF; */
+    background: linear-gradient(90deg, #2d3334, #15191c);
+    background-clip: text;
+    font-size: 30px;
+    -webkit-background-clip: text;
+    cursor: pointer;
+
+}
+
+/* Add CSS style for the border bottom */
+/* Add CSS style for the default border bottom */
+.tos_head::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Adjust the height as needed for the thin line */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Replace with the default border color */
+}
+
+/* Add CSS style for the border bottom on hover */
+.tos_head:hover::after {
+    height: 2px;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+    transform: translateX(80%);
+    transition: width 0.3s ease-in-out, transform-origin 0s;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Replace with the border color on hover */
+}
+
+
+
+
+.service_explain {
+
+    margin-top: 3% !important;
+    width: 85%;
+    margin: auto;
+    background-color: #15191c;
+    /* border-radius: 5px; */
+    text-align: justify;
+    padding: 20px 30px;
+    padding-right: 50px;
+    -webkit-border-radius: 5px;
+    -webkit-border-top-right-radius: 80px;
+    -webkit-border-bottom-right-radius: 80px;
+    -moz-border-radius: 5px;
+    -moz-border-radius-topright: 80px;
+    -moz-border-radius-bottomright: 80px;
+    border-radius: 5px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.service_explain_top {
+    margin-top: 3% !important;
+    width: 90%;
+    margin: auto;
+    background-color: #2d3334;
+    border-radius: 5px;
+    text-align: justify;
+    padding: 20px 30px;
+
+}
+
+.tosquestion {
+    line-height: 2.5rem;
+    color: white;
+    font-size: 20px !important;
+    font-family: 'PoppinsRegular';
+
+}
+
+
+/* number css */
+.tosnumber {
+
+
+    background-color: #2d3334;
+    width: 15px;
+    height: 15px;
+    padding-left: 5px;
+    text-align: center !important;
+    margin: auto !important;
+    border-radius: 5px;
+    /* margin: 20px; */
+    /* padding: 5px; */
+}
+
+.tospara {
+    font-family: 'PoppinsLight';
+}
+
+@media  only screen and (max-width:768px) {
+    .service_explain {
+        width:90% ;
+     
+    
+    }
+    .service_explain_top {
+        margin-top: 2% ;
+        width: 90%;
+        margin: auto;
+        background-color: #2d3334;
+        border-radius: 5px;
+        text-align: justify;
+        padding: 20px 30px;
+    
+    }
+
+    
+.tos_head {
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+}
+.tosquestion{
+    font-size: 18px;
+}
+.tospara{
+    font-size: 13px;
+}
+    
+}

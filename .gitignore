@@ -1,0 +1,15 @@
+# Node modules (backend & frontend dono)
+node_modules/
+**/node_modules/
+
+# User credentials file
+user credentials.txt
+
+# Optional: env files (recommended)
+.env
+**/.env
+
+
+# Firebase / Google service account
+serviceAccountKey.json
+**/serviceAccountKey.json

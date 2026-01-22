@@ -1,0 +1,166 @@
+.live-drop-cards-text-div{
+    display: flex;
+flex-direction: row;
+width: 100%;
+}
+.slick-list ,.live-drop-cards{
+    overflow-y: hidden !important;
+  }
+.live-drop-cards {
+    height: 80px; /* Set your desired height */
+}
+
+.live-drop-cards-text-div .text-live{
+    width: 10%;
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: auto;
+}
+
+.live-head{
+    font-size: 20px;
+    align-items: center;
+    padding: 5px;
+    margin: auto 5px;
+    border-bottom: 2px solid rgba(218, 31, 31,0.2);
+    /* margin: auto !important; */
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.live-drop-cards {
+    overflow-x: hidden;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* gap: 15px; */
+    /* width: 100%; */
+    /* margin-top: 20%; */
+    /* padding: 10%; */
+    /* width: 100%; */
+}
+
+.live-drop-cards .red {
+    background-color: #7d4e57;
+}
+
+.live-drop-cards .blue {
+    background-color: #191d32;
+}
+
+.live-drop-cards .green {
+    background-color: #282f44;
+}
+.green-head{
+    color: #490000;
+}
+
+.live-drop-cards .burgundy {
+    background-color: #17292b;
+}
+/* .live-drop-cards .single-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    text-align: center;
+    height: 80px;
+    width: 200px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+} */
+
+/* Add this to your CSS file */
+.slick-slide {
+    margin-right: 15px; /* Adjust the margin to set the desired gap */
+  }
+  
+.live-drop-cards .single-card {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    flex-direction: column;
+    text-align: center;
+    height: 80px;
+    /* width: 200px !important; */
+    border-radius: 15px; /* Adjusted border-radius */
+    padding: 10px; /* Added padding */
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.live-drop-cards .single-card p.tip {
+    font-size: 10em;
+    font-weight: 700;
+}
+.single-card img{
+    width: 100%;
+}
+
+.live-drop-cards .single-card p.second-text {
+    font-size: .7em;
+}
+
+.live-drop-cards .single-card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.live-drop-cards:hover>.single-card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+.l-card-div{
+    width: 90%;
+}
+
+
+@media screen and (max-width:800px) {
+    
+.l-card-div{
+    width: 80% !important;
+}
+.text-live{
+    width: 20% !important;
+}
+
+
+}
+
+
+@media screen and (max-width:600px) {
+    
+    .l-card-div{
+        width: 70% !important;
+    }
+    .text-live{
+        width: 30% !important;
+    }
+    
+    .live-head{
+        font-size: 17px;
+        /* align-items: baseline; */
+        padding: 5px;
+        margin: auto 0px;
+        border-bottom: 2px solid rgba(218, 31, 31,0.2);
+    
+        text-align: center;
+    }
+    
+    }
+
+    
+@media screen and (max-width:400px) {
+    
+    .l-card-div{
+        width: 65%;
+    }
+    
+    .live-head{
+        font-size: 14px;
+      
+    }
+    
+    }

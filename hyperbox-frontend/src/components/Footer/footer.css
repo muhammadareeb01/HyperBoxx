@@ -1,0 +1,347 @@
+@font-face {
+  font-family: 'PoppinsRegular';
+  src: url('../../assestes/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PoppinsLight';
+  src: url('../../assestes/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+}
+
+.hr {
+  border: 0.6px solid white;
+  opacity: 0.3;
+}
+
+.footer_main {
+
+  display: flex;
+  justify-content: center;
+
+  background-color: #1f2122;
+
+}
+
+.footer {
+  /* height: 50vh;  */
+  /* margin-top: 20px; */
+  padding-bottom: 5px;
+  width: 100%;
+  overflow-x: hidden !important;
+
+  background-color: #1f2122;
+}
+
+.footer_main div {
+
+  margin: 0px 7px;
+
+}
+
+/* icons */
+.light-button button.bt {
+  position: relative;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  outline: none;
+  background: none;
+
+  border: none;
+}
+
+.light-button button.bt .button-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  background-color: #0a0a0a;
+  border-radius: 5px;
+  color: #0f0f0f;
+  font-weight: 600;
+
+  transition: 300ms;
+  outline: #0f0f0f 2px solid;
+  outline-offset: 20;
+}
+
+.light-button button.bt .button-holder svg {
+  height: 30px;
+  fill: #0f0f0f;
+  transition: 300ms;
+}
+
+.light-button button.bt .light-holder {
+  position: absolute;
+  height: 100px;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.light-button button.bt .light-holder .dot {
+  position: absolute;
+  top: 0;
+
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  /* left: 50px; */
+  width: 8px;
+  height: 8px;
+  background-color: #0a0a0a;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.icon {
+  margin-top: 5px;
+  height: 30px;
+  color: white !important;
+  border-color: white !important;
+}
+
+.button-holder p {
+  font-size: 10px;
+  font-weight: bold !important;
+
+  margin-top: 5px;
+}
+
+.light-button button.bt .light-holder .light {
+  position: absolute;
+  top: 0;
+  /* left: 0px; */
+  width: 200px;
+  height: 60px;
+  clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+  background: transparent;
+}
+
+.light-button button.bt:hover .button-holder img {
+  fill: rgba(88, 101, 242, 1) !important;
+}
+
+.light-button button.bt:hover .button-holder {}
+
+
+.light-button button.bt:hover .light-holder .light {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(88, 101, 242, 1) 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* insta */
+.light-button button.bt:hover .light-holder .instalight {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(128, 70, 157, 0.6) 0%, rgba(215, 73, 154, 0.0) 100%) !important;
+
+}
+
+/* twitter */
+.twitter-light-button button.bt:hover .light-holder .twitterlight {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(29, 161, 242, 1) 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.twitter-light-button button.bt:hover .button-holder {
+  color: rgba(29, 161, 242, 1) !important;
+  outline: rgba(29, 161, 242, 1) 2px solid !important;
+
+  background-color: rgba(29, 161, 242, 0.9);
+
+  outline-offset: 2px;
+}
+
+.twitter-light-button button.bt .button-holder {
+
+  color: rgba(29, 161, 242, 1) !important;
+  outline: rgba(29, 161, 242, 1) 2px solid !important;
+  background-color: rgba(29, 161, 242, 0.3);
+
+  outline-offset: 2px;
+}
+
+
+
+
+/* insta */
+.insta-light-button button.bt .button-holder {
+  color: #E1306C !important;
+  outline: #E1306C 2px solid;
+
+  background-color: #E1306C;
+  opacity: 0.5;
+  outline-offset: 2px;
+}
+
+.insta-light-button button.bt:hover .light-holder .twitterlight {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(29, 161, 242, 1) 0%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.insta-light-button button.bt:hover .button-holder {
+
+  opacity: 0.9;
+}
+
+
+
+
+
+
+/* discord */
+.discord-light-button button.bt:hover .button-holder {
+  color: rgba(88, 101, 242, 1) !important;
+  outline: rgba(88, 101, 242, 1)2px solid !important;
+
+  background-color: rgba(88, 101, 242, 0.9);
+
+
+  outline-offset: 2px;
+}
+
+.discord-light-button button.bt .button-holder {
+
+  color: rgba(88, 101, 242, 1);
+  outline: rgba(88, 101, 242, 1) 2px solid;
+  outline-offset: 2px;
+  background-color: rgba(88, 101, 242, 0.3);
+
+  outline-offset: 2px;
+}
+
+
+
+/* facebook */
+.facebook-light-button button.bt:hover .button-holder {
+  color: rgba(24, 119, 242, 1) !important;
+  outline: rgba(24, 119, 242, 1) 2px solid !important;
+  background-color: rgba(24, 119, 242, 0.9);
+  outline-offset: 2px;
+}
+
+.facebook-light-button button.bt .button-holder {
+  color: rgba(24, 119, 242, 1);
+  outline: rgba(24, 119, 242, 1) 2px solid;
+  outline-offset: 2px;
+  background-color: rgba(24, 119, 242, 0.3);
+  outline-offset: 2px;
+}
+
+
+
+/* fotterMian-2 */
+.footer_main2 {
+  display: flex;
+  justify-content: center;
+
+  background-color: #1f2122;
+  margin-top: 3%;
+
+
+}
+
+.footer_main2 div {
+  margin: 0px 15px;
+  color: white;
+  opacity: 0.6;
+}
+
+.footer_main2 div p {
+  font-size: 12px;
+}
+
+.footer_para .para1 {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+.footer_para .para2 {
+  text-align: center;
+  margin: 4px !important;
+  color: white;
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+p {
+  font-family: PoppinsLight;
+}
+
+
+
+@media screen and (max-width:600px) {
+
+  .footer_main2 div p,
+  .para1,
+  .para2 {
+    font-size: 10px;
+  }
+
+
+  .light-button button.bt .button-holder {
+
+    height: 50px;
+    width: 50px;
+  }
+
+  .light-button button.bt .light-holder .dot {
+    position: absolute;
+    top: 0;
+    left: 20px;
+
+    width: 6px;
+    height: 6px;
+  }
+
+  .icon {
+    margin-top: 20px;
+    height: 25px;
+  }
+
+
+  .button-holder p {
+    font-size: 8px;
+    font-weight: bold !important;
+
+    margin-top: 0px;
+  }
+
+  .light-button button.bt .light-holder .light {
+    position: relative;
+    top: 0;
+    left: -6px;
+    width: 200px;
+    height: 70px;
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width:450px) {
+
+  .footer_main2 div p,
+  .para1,
+  .para2 {
+    font-size: 8px;
+
+    margin-top: 5px;
+    font-weight: 700;
+  }
+
+  .icon {
+    margin-top: 15px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,317 @@
+.main-page-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.livedrop-div {
+    padding-top: 1%;
+    padding-bottom: 5%;
+}
+
+.page-main {
+    position: relative;
+    /* width: 100vw; */
+    width: 100%;
+    height: auto;
+    background: url('../../public/mainpagebox/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.99;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 10px 0px;
+    margin: 0;
+}
+
+
+.page-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Adjust the alpha value to control darkness */
+}
+
+/* btns mosst popular all mystery btns section  */
+
+.btns-flex-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-all-mystery {
+    display: flex;
+    justify-content: center;
+}
+
+.btns-flex-div>div {
+    margin-top: 3%;
+    margin-left: 7%;
+    margin-right: 9.5%;
+}
+
+.btn-all-mystery-box,
+.btn-most-popular {
+    padding: 10px 25px;
+    border: none;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-family: PoppinsLight;
+    border-radius: 8px 100px;
+    transition: 1.0s all;
+}
+
+.btn-select-box {
+    padding: 15px 35px;
+    border: none;
+    font-size: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-family: PoppinsLight;
+    border-radius: 100px 10px 10px 100px;
+    transition: 1.0s all;
+}
+
+.btn-all-mystery-box:hover,
+.btn-most-popular:hover,
+.btn-select-box:hover {
+
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: 1.5s all;
+    font-weight: bold;
+    color: black;
+}
+
+
+/* end btns */
+
+
+.main-heding {
+    text-align: center;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.99);
+
+    /* margin-top: 2%; */
+    font-family: PoppinsItalic;
+}
+
+.main-heding h2 {
+    font-size: 33px;
+}
+
+.flex-box-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.subbox {
+    width: 17%;
+    margin: 3% 0;
+    box-sizing: border-box;
+}
+
+
+@media screen and (max-width:900px) {
+
+    .flex-box-div {
+        display: flex;
+        justify-content: space-between;
+
+        width: 80%;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+
+    .subbox {
+        width: 30%;
+        margin: 5% auto;
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* box-sizing: border-box; */
+    }
+
+    .main-heding h2 {
+        font-size: 29px;
+    }
+
+}
+
+
+
+
+@media screen and (min-width:500px) and (max-width:600px) {
+    .subbox {
+        width: 29% !important;
+        margin: 5% auto;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+}
+
+
+
+
+@media screen and (max-width:700px) {
+
+
+    .main-heding h2 {
+        font-size: 25px;
+    }
+
+    .subbox {
+        width: 30%;
+        margin: 5% auto;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+
+    .flex-box-div {
+        width: 90%;
+
+    }
+
+    .btn-select-box {
+        padding: 10px 10px;
+        border: none;
+        font-size: 11px;
+
+    }
+
+    .btn-all-mystery-box,
+    .btn-most-popular {
+        padding: 5px 20px;
+        margin-left: 5px;
+        font-size: 10px;
+        border-radius: 5px 30px;
+
+    }
+
+}
+
+@media screen and (max-width:500px) {
+
+
+    .main-heding h2 {
+        font-size: 22px;
+    }
+
+
+    .subbox {
+        width: 40%;
+
+    }
+
+}
+
+@media screen and (max-width:350px) {
+
+    .main-heding h2 {
+        font-size: 20px;
+    }
+
+
+
+}
+
+
+@media screen and (max-width:400px) {
+
+    .btns-flex-div>div {
+        margin-top: 3%;
+        margin-left: 5%;
+        margin-right: 0.0%;
+    }
+
+    .main-heding h2 {
+        font-size: 20px;
+    }
+
+
+
+
+}
+
+@media screen and (min-width:950px) and (max-width:1100px) {
+    .subbox {
+        width: 25%;
+
+    }
+
+    .flex-box-div {
+        width: 95%;
+        margin: auto;
+
+    }
+
+}
+
+
+@media screen and (min-width:850px) and (max-width:949px) {
+    .subbox {
+        width: 25%;
+
+    }
+
+    .flex-box-div {
+        width: 93%;
+        margin: auto;
+
+    }
+
+}
+
+
+
+@media screen and (max-width:300px) {
+    .subbox {
+        width: 50%;
+
+        margin-top: 5%;
+
+    }
+
+    .flex-box-div {
+
+        display: block;
+
+    }
+
+    .btns-flex-div>div {
+        margin-top: 3%;
+        margin-left: 5%;
+        margin-right: 0.0%;
+    }
+
+    .main-heding h2 {
+        font-size: 17px;
+        width: 90%;
+
+    }
+
+
+    .btn-select-box {
+
+        font-size: 7px;
+
+    }
+
+    .btn-all-mystery-box,
+    .btn-most-popular {
+
+        margin-right: 0px;
+        overflow-x: hidden;
+        font-size: 7px;
+
+
+    }
+}

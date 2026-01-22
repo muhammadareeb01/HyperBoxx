@@ -1,0 +1,705 @@
+/* MainComponent.css */
+
+.main {
+    display: flex;
+    width: 100%;
+    /* overflow-x: hidden; */
+    padding: 0px;
+    margin: 0;
+    font-size: 13px;
+    flex-direction: row;
+
+    background-color: #15191c;
+    /* box-shadow: ; */
+}
+
+.nav {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    width: 10%;
+    align-items: center;
+    margin: auto;
+    /* margin-left: 30px; */
+
+}
+
+.logo img {
+
+    margin-left: 40px !important;
+    align-items: center;
+    margin: auto;
+}
+
+.link_btn_div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.content {
+    width: 90%;
+    /* justify-content: space-evenly; */
+    display: flex;
+
+
+}
+
+.user_div {
+    /* width: 5%; */
+    margin: auto;
+    /* padding: 0px 50px; */
+    margin-right: 30px;
+}
+
+.row1-main {
+    font-family: PoppinsLight;
+    display: flex;
+    margin: 12px;
+    justify-content: space-around;
+    width: 90%;
+    background-color: rgba(31, 33, 34, 0.78);
+    /* background-color: #234567; */
+    /* border-radius: 10px; */
+    border-radius: 5px 5px 100px 5px;
+
+}
+
+.row1 {
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.row2-main {
+    font-family: PoppinsRegular;
+    display: flex;
+    font-weight: 500;
+    margin: 5px;
+    width: 100%;
+    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.558);
+}
+
+.row2,
+.row2_btns {
+    padding-bottom: 5px;
+
+}
+
+.row2_btns {
+    margin-top: -5px !important;
+}
+
+.amountbtn {
+    margin-top: 0px !important;
+}
+
+.btn_div {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.btn_div>div {
+    /* margin: auto; */
+    /* display: block; */
+    /* width: 40% !important; */
+}
+
+.nav-expanded {
+    display: flex;
+    /* flex-direction: column; */
+}
+
+
+.amount_span {
+    /* border: 2px solid rgba(0, 0, 0, 0.3); */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.6);
+    padding: 5px 10px;
+    padding-right: 20px;
+    border-radius: 5px;
+    background-color: #212121;
+    font-weight: 800;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    color: white;
+    /* background: url('../../assestes/navbar/amount.png'); */
+    text-align: center;
+    background-position: center;
+    filter: brightness(90%);
+}
+
+.dollar {
+    color: #FFDF00;
+}
+
+/* deposit btn  */
+
+.depositbtn {
+    font-family: PoppinsRegular;
+    font-size: 13px;
+    font-weight: 500;
+    background: #212121;
+    color: #FFDF00;
+    fill: rgb(155, 153, 153);
+    padding: 0.5em 1.5em;
+    padding-left: 1.2em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.iconmoney {
+    width: 25px !important;
+}
+
+.depositbtn .deposit_span {
+    display: block;
+    margin-left: 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+.depositbtn .iconmoney {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.depositbtn:hover {
+    background: #000;
+}
+
+.depositbtn:hover .svg-wrapper {
+    transform: scale(1.25);
+    transition: 0.5s linear;
+}
+
+.iconmoney {
+    /* color: yellow !important; */
+}
+
+.depositbtn:hover .iconmoney {
+    transform: translateX(2.0em) scale(1.1);
+    fill: #fff;
+
+}
+
+.depositbtn:hover .deposit_span {
+    opacity: 0;
+    transition: 0.5s linear;
+}
+
+.depositbtn:active {
+    transform: scale(0.95);
+}
+
+
+
+
+
+
+
+/*   link div and its btn */
+.link_div {
+    display: flex;
+    width: 70%;
+    /* margin: auto; */
+    justify-content: space-around;
+
+}
+
+.link_btn_main_div {
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+}
+
+.row2,
+.row1 {
+    cursor: pointer;
+    position: relative;
+
+}
+
+.linkStyle {
+    text-decoration: none;
+    color: inherit;
+}
+
+.row2::before,
+.row1::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    /* Add your desired border color */
+    transition: width 0.3s ease-in-out;
+
+}
+
+.row2:hover::before,
+.row1:hover::before {
+    width: 100%;
+}
+
+
+
+/* user btn */
+.userBtn {
+    width: 100px;
+    height: 40px;
+
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+}
+
+.IconContainer {
+    width: 30px;
+    height: 30px;
+    /* background: linear-gradient(to bottom, rgb(255, 136, 255),rgb(172, 70, 255)); */
+    border-radius: 50%;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: .3s;
+}
+
+.iconmoney {
+    border-radius: 1px;
+}
+
+.text {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none !important;
+    z-index: 1;
+    transition-duration: .3s;
+    font-size: 1.04em;
+}
+
+.userBtn:hover .IconContainer {
+    width: 90px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.userBtn:hover .text {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: .3s;
+}
+
+.userBtn:active {
+    transform: scale(0.95);
+    transition-duration: .3s;
+}
+
+
+
+@media only screen and (max-width:1150px) {
+
+
+    .btn_div {
+        width: 35%;
+    }
+
+    .link_div {
+        width: 65%;
+    }
+
+}
+
+/* media query */
+@media only screen and (max-width:900px) {
+    .link_div {
+
+        width: 60%;
+
+
+    }
+
+    .row2-main {
+
+        width: 90%;
+
+    }
+
+    .main {
+        font-size: 11px;
+    }
+
+    .logo {
+        width: 12%;
+
+    }
+
+    .iconmoney {
+        width: 20px !important;
+    }
+
+    .depositbtn {
+
+        font-size: 11px;
+
+    }
+
+    .link_btn_div {
+
+        width: 100%;
+    }
+
+    .content {
+        width: 90%;
+
+    }
+
+
+    .btn_div {
+        width: 40%;
+    }
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    .link_btn_div {
+        display: none;
+    }
+
+    .toggle-btn {
+        display: block;
+        /* border: none;
+        background-color: transparent;
+        color: white;
+        font-size: 15px; */
+    }
+
+    /* Add this CSS to your existing styles or create a new stylesheet */
+    /* Add this CSS to your existing styles or create a new stylesheet */
+
+    .toggle-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        /* padding: 10px; */
+    }
+
+    .icon-bars {
+        font-size: 24px;
+        color: white;
+        /* color: #333; Adjust the color as needed */
+
+    }
+
+
+
+
+    /* Add any additional styles you need for your navigation */
+
+    .links.nav-visible {
+        right: 0;
+        /* Show the links by setting right to 0 */
+    }
+
+    .main {
+        flex-direction: row;
+    }
+
+
+    .row2-main,
+    .link_div,
+    .row2_btns,
+    .btn_div {
+        flex-direction: column;
+        padding-top: 10px;
+    }
+
+    .row1-main {
+        flex-direction: column;
+        background-color: none;
+    }
+
+    .toggle-button {
+        /* display: flex; */
+        /* justify-content: flex-end; */
+        padding: 10px;
+    }
+
+
+    /* .nav-expanded .logo{position:fixed;} */
+
+    .link_btn_div {
+        display: none;
+        transition: height 0.3s ease-in-out;
+        /* Add a transition for the height property */
+        overflow: hidden;
+        /* Hide overflow content when the element is collapsed */
+    }
+
+    .row1-main {
+        /* width: 250px !important; */
+    }
+
+    /* CSS for smooth transition of link_btn_div */
+    .link_btn_div {
+        display: none;
+        height: 0;
+        /* Start with a height of 0 */
+        transition: height 0.9s ease-in-out;
+        overflow: hidden;
+        /* Hide overflow content when the element is collapsed */
+    }
+
+
+    /* CSS for when the navigation links are visible */
+    .link_btn_div.nav-visible {
+        background: none;
+        /* Reset background color to default */
+        display: flex;
+        /* flex-direction: column; */
+        height: 70vh;
+        /* Allow the height to expand dynamically */
+    }
+
+    .row2 {
+        display: flex;
+
+    }
+
+    .row2>div {
+        width: 50%;
+    }
+
+    /* CSS for the user logo */
+    .user_div {
+        /* margin-left: auto; */
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1%;
+
+        margin-bottom: 2%;
+        /* Push the user_div to the right */
+    }
+
+
+    .row1-main {
+        font-family: PoppinsLight;
+        display: flex;
+        margin: 12px;
+        justify-content: space-around;
+        width: 100%;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-radius: 0px 40px 40px 0px;
+        background-color: none !important;
+    }
+}
+
+
+/*  */
+/* navbar.css */
+.toggle-btn {
+    display: none ;
+}
+
+@media (max-width: 800px) {
+
+    .toggle-btn {
+        display: block ;
+    }
+    .row2-main,
+    .btn_div,
+    .link_div {
+        width: 100%;
+    }
+
+    .row2 img {
+        width: 20px;
+    }
+
+    .row2 span {
+        font-size: 10px;
+        padding-left: 50px;
+    }
+
+    .content {
+        flex-direction: column;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .link_btn_div {
+        width: 100%;
+    }
+
+    .logo {
+        position: absolute;
+        top: 5px;
+        align-items: center !important;
+
+
+    }
+
+    .toggle-button {
+        order: 1;
+        position: relative;
+    
+        top: 0px;
+    }
+
+    .user_div {
+        order: 2;
+        /* align-items: center; */
+        justify-self: center;
+    }
+
+    .logo {
+        order: 3;
+        align-items: center;
+    }
+
+    .link_btn_main_div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .nav-expanded .logo {
+        position: absolute;
+        top: 5px;
+
+    }
+
+    .nav-expanded .row1-main {
+        position: relative;
+        top: 50px;
+        /* margin: 100px; */
+    }
+
+    .nav-expanded .row2-main {
+        position: relative;
+        top: 40px;
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .link_div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .link_div>div {
+        width: 20%;
+        padding: 0;
+    }
+
+    .btn_div {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        width: 100%;
+    }
+
+}
+
+
+/* ... Existing styles ... */
+
+/* Your existing styles */
+/* Remove this block from your CSS */
+
+
+
+
+@media (max-width: 500px) {
+
+    .userBtn {
+        width: 60px;
+        height: 30px;
+
+        position: absolute;
+        left: 45%;
+        /* top: 10%; */
+        /* justify-content: center; */
+        padding: 10px;
+    }
+
+    .text {
+        width: 30px;
+        font-size: 0.8em;
+    }
+
+    .IconContainer {
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .userBtn:hover .IconContainer {
+        width: 30px;
+
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .userBtn {
+
+        position: absolute;
+        left: 43%;
+        /* top: 10%; */
+        /* justify-content: center; */
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width:801px) {
+
+    .toggle-btn {
+        display: none !important;
+    }
+}
+
+
+@media screen and (max-width:800px) {
+
+    .toggle-btn {
+        display: block;
+    }
+}

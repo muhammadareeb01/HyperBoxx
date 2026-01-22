@@ -1,0 +1,162 @@
+.orange {
+  color: rgb(204, 31, 31);
+}
+
+.profile-inventory-container {
+  /* max-width: 700px; */
+  margin: 30px;
+  background-color: #001925;
+  padding: 30px;
+  border-left: 5px solid rgb(204, 31, 31);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.heading {
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  position: relative;
+  /* Add this to make positioning the border easier */
+}
+
+.heading::before {
+  /* Create a pseudo-element to act as the border */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(204, 31, 31);
+  transition: width 1s ease-in;
+  /* Transition the width property */
+}
+
+.heading:hover::before {
+  /* Increase the width on hover */
+  width: 20%;
+}
+
+
+.profile-inventory-container .form .username-email {
+  color: #87a4b6;
+  width: 100%;
+  background-color: #002733;
+  border: none;
+  outline: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  border-left: 1px solid transparent;
+}
+
+.profile-inventory-container .form .username-email:focus {
+  border-left: 5px solid rgb(204, 31, 31);
+}
+
+.profile-inventory-container .form .textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #013747;
+  color: rgb(204, 31, 31);
+  font-weight: bold;
+  resize: none;
+  max-height: 150px;
+  margin-bottom: 20px;
+  border-left: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-inventory-container .form .textarea:focus {
+  border-left: 5px solid rgb(204, 31, 31);
+}
+
+.profile-inventory-container .form .social-icon-container {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.profile-inventory-container .form .social-icon-container .reset-button-container {
+  filter: drop-shadow(1px 1px 0px rgb(204, 31, 31));
+  flex-basis: 30%;
+}
+
+.profile-inventory-container .form .social-icon-container .reset-button-container .reset-button {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  margin: 2% 0px;
+  color: rgb(204, 31, 31);
+  font-weight: bold;
+  background: #001925;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  transition: all 0.2s ease-in-out;
+}
+
+.profile-inventory-container .form .social-icon-container .reset-button-container .reset-button:hover {
+  background: rgb(204, 31, 31);
+  color: #001925;
+}
+
+
+
+/* social icons */
+.icons-main-div {
+  display: flex;
+  margin: 2% 0px;
+
+}
+
+.icons-main-div>div {
+  padding: 0px 10px;
+}
+
+/* discordz */
+.discordz {
+  display: grid;
+  place-items: center;
+  background: #e3edf7;
+  padding: 0.4em;
+  border-radius: 10px;
+  /* box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15); */
+  /* -6px +6px 10px -1px rgba(255,255,255,0.7); */
+  border: 1px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.discordz:hover {
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+    0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform: translateY(0.5em);
+}
+
+.discordz svg {
+  transition: transform 0.5s;
+}
+
+.discordz:hover svg {
+  transform: scale(0.9);
+  fill: #333333;
+}
+
+
+
+@media screen and (max-width:750px) {
+  .profile-inventory-container .form .social-icon-container .reset-button-container .reset-button {
+
+    padding: 7px 50px;
+    margin-bottom: 10px;
+  }
+}

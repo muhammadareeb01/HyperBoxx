@@ -1,0 +1,324 @@
+.free_box_main {
+    background-color: #15191c;
+    width: 100%;
+    /* padding-bottom: 10%; */
+    overflow-x: hidden !important;
+}
+
+.first_free_box {
+    display: flex;
+    width: 100%;
+    
+}
+
+/* .first_free_box, */
+
+.freeboximg {
+    width: 100%;
+    /* width: 400px !important; */
+    margin: auto !important;
+    display: block;
+    padding-top: 20px;
+}
+
+.left_box {
+    width: 40%;
+
+    background-color: #1f2122;
+    /* margin-top: 4%  !important; */
+    border: 3px solid rgba(65, 67, 68, 0.6);
+    height: 90vh;
+    margin: 4% auto;
+    border-radius: 10px;
+    /* text-align: left; */
+    padding: 0px 100px;
+}
+
+/* .left_box_second,
+.right_text_second {
+    margin-top: 5% !important;
+    overflow: hidden;
+    text-align: left;
+    padding: 0px 100px;
+    width: 40% !important;
+} */
+
+
+img {
+    width: 70%;
+    /* float: right; */
+}
+
+
+
+
+.freebox_para {
+    line-height: 1.5rem;
+    font-family: PoppinsLight;
+    /* padding: 15px 50px; */
+    text-align: center;
+    width: 100%;
+    color: white;
+
+}
+
+
+.freebox_head {
+    font-size: 33px;
+
+    font-family: 'PoppinsBold';
+    text-align: center;
+    color: rgba(255,255, 255, 0.8);
+}
+
+
+/* btn */
+.btn_para {
+    padding: 20px 0px;
+
+}
+
+.free_btn {
+
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 2px 30px;
+    color: white;
+    text-shadow: 2px 2px rgb(116, 116, 116);
+    text-transform: uppercase;
+    border: solid 2px black;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: hsl(2, 98%, 60%);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.free_btn:active {
+    transform: scale(.9);
+    transition: all 100ms ease;
+}
+
+.free_btn img {
+    transition: all .5s ease;
+    z-index: 2;
+}
+
+.play {
+    transition: all .5s ease;
+    transition-delay: 300ms;
+}
+
+.free_btn:hover img {
+    transform: scale(4) translate(50%);
+}
+
+.now {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    transition: all .5s ease;
+    z-index: 2;
+}
+
+.free_btn:hover .now {
+    transform: translateX(10px);
+    transition-delay: 300ms;
+}
+
+.free_btn:hover .play {
+    transform: translateX(200%);
+    transition-delay: 300ms;
+}
+
+/* bottomborder */
+.border_bottom {
+    margin: 3% 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.43);
+    opacity: 0.1;
+}
+
+.modalbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: white;
+    color: black !important;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.type {
+    color: black !important;
+}
+
+.closebtn {
+    position: absolute;
+    /* top: 100px; */
+
+    right: 10px;
+    top: 340px;
+    color: white !important;
+    font-family: 'PoppinsBold' !important;
+    border: 2px solid none !important;
+    background-color: rgb(204, 31, 31) !important;
+    padding: 5px 20px !important;
+    float: right;
+
+}
+
+#transition-modal-title {
+    font-family: 'PoppinsBold' !important;
+    color: white;
+    font-size: 35px !important;
+    text-align: center !important;
+
+}
+
+/* promo code input  */
+.input-container {
+    display: flex;
+    background: white;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #23272F 0%, #14161a 100%);
+    box-shadow: 10px 10px 20px #0e1013, -10px -10px 40px #383e4b;
+    padding: 0.1rem;
+    height: 50px;
+    gap: 0.3rem;
+    margin: 30px auto;
+}
+
+.input-container .input-promo {
+    border-radius: 0.8rem 0 0 0.8rem;
+    background: #23272F;
+    box-shadow: inset 5px 5px 10px #0e1013, inset -5px -5px 10px #383e4b, 0px 0px 100px rgba(255, 212, 59, 0), 0px 0px 100px rgba(255, 102, 0, 0);
+    width: 100%;
+    flex-basis: 60%;
+    padding: 1rem;
+    border: none;
+    border: 1px solid transparent;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-container .input-promo:focus {
+    border: 1px solid hsl(2, 98%, 60%);
+    outline: none;
+    box-shadow: inset 0px 0px 10px rgba(255, 25, 42, 0.5), inset 0px 0px 10px rgba(255, 25, 42, 0.5), ;
+}
+
+.input-container .promobtn {
+    flex-basis: 40%;
+    /* padding: 1rem; */
+    background: linear-gradient(135deg, hsl(2, 98%, 60%) 0%, rgb(34, 33, 32) 100%);
+    box-shadow: 0px 0px 1px rgba(255, 212, 59, 0.5), 0px 0px 1px rgba(255, 102, 0, 0.5);
+    font-weight: 900;
+    font-size: 11px ;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: #FFF;
+    border: none;
+    margin-top: 0px;
+    width: 100%;
+    border-radius: 0 1rem 1rem 0;
+    transition: all 0.2s ease-in-out;
+    /* background-color: ; */
+}
+
+.input-container .promobtn:hover {
+    background: linear-gradient(135deg, hsl(2, 98%, 60%) 50%, hsl(2, 98%, 60%) 100%);
+    /* box-shadow: 0px 0px 100px rgba(255, 212, 59, 0.5), 0px 0px 100px rgba(255, 102, 0, 0.5); */
+}
+
+@media (max-width: 500px) {
+    .input-container {
+        /* flex-direction: column; */
+    }
+
+    .input-container .input-promo {
+        border-radius: 0.8rem;
+    }
+
+    .input-container .promobtn {
+        /* padding: 1rem; */
+        border-radius: 0.8rem;
+    }
+}
+
+
+
+/* media querr */
+@media screen and (max-width:800px) {
+    .freeboximg {
+        width: 250px;
+        margin: auto;
+    }
+    .left_box {
+        width: 80%;
+        height: 80vh;
+        margin: 4% auto;
+        border-radius: 10px;
+        /* text-align: left; */
+        padding: 0px 50px;
+    }    
+
+    .freebox_head {
+        font-size: 30px;
+
+    }
+}
+
+
+@media screen and (max-width:800px) {
+    .left_box {
+
+        padding: 0px 50px;
+    }
+
+    .freeboximg {
+        width: 220px;
+        margin: auto;
+    }
+
+
+    .freebox_head {
+        font-size: 28px;
+
+    }
+}
+
+@media screen and (max-width:1000px) {
+    
+
+
+.input-container .promobtn {
+
+    font-size: 12px;
+
+}
+    }
+
+
+
+
+
+    
+@media screen and (max-width:500px) {
+  .promobtn{
+    font-size: 10px !important;
+  }
+
+  .freebox_para {
+    font-size: 12px;
+  }
+}
+    
