@@ -100,14 +100,7 @@ function MyProfile() {
           </div>
           
           <div className="history_inventory_div">
-            <div className="list_main_div">
-              <ul>
-                <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-                  <div><li>Setting</li></div>
-                  <div><li>History</li></div>
-                </div>
-              </ul>
-            </div>
+            {/* <div className="list_main_div"> (Removed static placeholders) </div> */}
             <div>
               {/* Pass the userData to your inventory component so it can use the ID */}
               {userData && <ProfileInventory userId={auth.currentUser?.uid} />}

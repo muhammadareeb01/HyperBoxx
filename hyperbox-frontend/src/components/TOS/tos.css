@@ -64,18 +64,6 @@
     /* Replace with the default border color */
 }
 
-/* Add CSS style for the border bottom on hover */
-.tos_head:hover::after {
-    height: 2px;
-    width: 400px;
-    margin: auto;
-    text-align: center;
-    transform: translateX(80%);
-    transition: width 0.3s ease-in-out, transform-origin 0s;
-
-    background-color: rgba(255, 255, 255, 0.9);
-    /* Replace with the border color on hover */
-}
 
 
 

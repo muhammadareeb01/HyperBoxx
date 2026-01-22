@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div>
-        {!isPlainPage && <Navbar />}s
+        {!isPlainPage && <Navbar />}
       </div>
 
       <Routes>

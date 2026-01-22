@@ -5,6 +5,7 @@ import { Modal, Button, Form, Badge, Alert, Spinner } from "react-bootstrap";
 import { FaBoxOpen, FaHistory, FaTruck, FaMoneyBillWave, FaCoins, FaCheckCircle, FaClock } from 'react-icons/fa'; // Icons
 import api from "../../utils/api";
 import "./profile.css";
+import "./profileTabs.css"; // Newly added premium tabs styles
 
 const ProfileInventory = () => {
     const auth = getAuth();
@@ -81,19 +82,20 @@ const ProfileInventory = () => {
         <div className="profile-inventory-container mt-4">
             
             {/* --- TABS --- */}
-            <div className="d-flex justify-content-center mb-4 gap-3">
-                <button 
-                    className={`btn ${activeTab === 'inventory' ? 'btn-primary' : 'btn-outline-light'} d-flex align-items-center gap-2`}
+            {/* --- PREMIUM TABS --- */}
+            <div className="profile-tabs-container mb-4">
+                <div 
+                    className={`profile-tab ${activeTab === 'inventory' ? 'active' : ''}`}
                     onClick={() => setActiveTab('inventory')}
                 >
-                    <FaBoxOpen /> My Inventory
-                </button>
-                <button 
-                    className={`btn ${activeTab === 'history' ? 'btn-primary' : 'btn-outline-light'} d-flex align-items-center gap-2`}
-                    onClick={() => setActiveTab('history')}
+                    <FaBoxOpen className="me-2" /> MY INVENTORY
+                </div>
+                <div 
+                    className={`profile-tab ${activeTab === 'history' ? 'active' : ''}`}
+                    onClick={() => { console.log('History Clicked'); setActiveTab('history'); }}
                 >
-                    <FaHistory /> Transaction History
-                </button>
+                    <FaHistory className="me-2" /> TRANSACTION HISTORY
+                </div>
             </div>
 
             {msg && <Alert variant={msg.type} onClose={() => setMsg(null)} dismissible>{msg.text}</Alert>}
@@ -141,32 +143,32 @@ const ProfileInventory = () => {
 
                     {/* HISTORY TAB */}
                     {activeTab === 'history' && (
-                        <div className="table-responsive">
-                            <table className="table table-dark table-hover table-bordered align-middle">
-                                <thead>
+                        <div className="table-responsive history-table-wrapper custom-scrollbar">
+                            <table className="table table-dark table-hover align-middle custom-history-table mb-0">
+                                <thead className="table-head-glow">
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                        <th>Amount</th>
+                                        <th style={{width: '20%'}}>Date</th>
+                                        <th style={{width: '15%'}}>Type</th>
+                                        <th style={{width: '45%'}}>Description</th>
+                                        <th style={{width: '20%'}}>Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {transactions.map((tx) => (
-                                        <tr key={tx.id}>
-                                            <td>{new Date(tx.timestamp?.seconds * 1000).toLocaleDateString()}</td>
+                                        <tr key={tx.id} className="history-row">
+                                            <td className="text-muted">{new Date(tx.timestamp?.seconds * 1000).toLocaleDateString()} <small>{new Date(tx.timestamp?.seconds * 1000).toLocaleTimeString()}</small></td>
                                             <td>
-                                                <Badge bg={tx.type === 'DEPOSIT' || tx.type === 'SELL_ITEM' ? 'success' : 'danger'}>
+                                                <Badge bg={tx.type === 'DEPOSIT' || tx.type === 'SELL_ITEM' ? 'success' : 'danger'} className="history-badge">
                                                     {tx.type}
                                                 </Badge>
                                             </td>
-                                            <td>{tx.description}</td>
-                                            <td className={tx.amount > 0 ? 'text-success fw-bold' : 'text-danger fw-bold'}>
+                                            <td className="text-white-50">{tx.description}</td>
+                                            <td className={tx.amount > 0 ? 'text-success fw-bold amount-cell' : 'text-danger fw-bold amount-cell'}>
                                                 {tx.amount > 0 ? '+' : ''}${Math.abs(tx.amount).toFixed(2)}
                                             </td>
                                         </tr>
                                     ))}
-                                    {transactions.length === 0 && <tr><td colSpan="4" className="text-center">No transactions yet.</td></tr>}
+                                    {transactions.length === 0 && <tr><td colSpan="4" className="text-center py-5 text-muted">No transactions found.</td></tr>}
                                 </tbody>
                             </table>
                         </div>

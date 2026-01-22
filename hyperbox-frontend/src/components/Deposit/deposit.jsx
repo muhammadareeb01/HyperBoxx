@@ -103,15 +103,15 @@ function Deposit() {
                         <div className='dec_div'>
                             <button onClick={handleDecrement} className='dec'>-</button>
                         </div>
-                        <div className="deposit-form-control">
+                        <div className="deposit-form-control" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <span style={{ fontSize: '2.5rem', color: '#fff', fontWeight: '700', marginRight: '5px' }}>$</span>
                             <input
-                                className="input inputz input-alt"
+                                className="inputz"
                                 type="text"
                                 value={amount}
                                 onChange={handleInputChange}
                                 placeholder='0'
                             />
-                            <span className="input-border input-border-alt"></span>
                         </div>
                         <div >
                             <button onClick={handleIncrement} className='add'>+</button>
@@ -131,20 +131,8 @@ function Deposit() {
                             </button>
                         </div>
 
-                        {/* 2. Placeholder Buttons (No Logic Yet) */}
-                        <div className='div2'>
-                            <button className='cash_app_btn'>
-                                <span className="span-mother">
-                                    <span>PAY</span><span> WITH</span><span>PAY</span><span>PAL</span>
-                                </span>
-                                <span className="span-mother2">
-                                    <span>PAY</span><span> WITH</span><span>PAY</span><span>PAL</span>
-                                </span>
-                            </button>
-                        </div>
-                        <div className='div3'>
-                            <button className='crypto'>Pay With Crypto  (10% Bonus)</button>
-                        </div>
+                       
+                       
                     </div>
 
                     <div className='cards-payment'>

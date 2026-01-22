@@ -38,25 +38,27 @@ const LiveDrop = () => {
     // --- SLIDER SETTINGS ---
     const settings = {
         infinite: true,
-        speed: 500,
-        slidesToShow: 5,
+        speed: 3000, // Slower continuous scroll
+        slidesToShow: 6,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 0,
+        cssEase: 'linear', // Continuous effect
         swipeToSlide: true, 
         pauseOnHover: true, 
         dots: false,
         arrows: false,
         responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 3 } },
-            { breakpoint: 600, settings: { slidesToShow: 2 } },
-            { breakpoint: 480, settings: { slidesToShow: 1 } }
+            { breakpoint: 1400, settings: { slidesToShow: 5 } },
+            { breakpoint: 1024, settings: { slidesToShow: 4 } },
+            { breakpoint: 768, settings: { slidesToShow: 3 } },
+            { breakpoint: 480, settings: { slidesToShow: 1.5 } } // Show part of next card
         ],
     };
 
     // Card Colors Helper
     const getCardColor = (index) => {
-        const colors = ['red', 'green', 'blue', 'burgundy'];
+        const colors = ['red', 'green', 'blue', 'burgundy', 'yellow'];
         return colors[index % colors.length];
     };
 
@@ -65,56 +67,26 @@ const LiveDrop = () => {
     return (
         <div className='live-drop-cards-text-div'>
             <div className='text-live'>
-                <h2 className='live-head'> 
-                    <span style={{ color: "#e8002a" }}> L </span>
-                    <span style={{ color: "#d00000" }}> I </span> 
-                    <span style={{ color: "#d00000" }}> V </span> 
-                    <span style={{ color: "#e9190f" }}> E </span> 
-                    <span style={{ color: "#ff0000" }}> DROP </span>
-                </h2>
+                <div className='live-head'> 
+                    <span className="live-dot"></span>
+                    <span style={{ color: "#fff" }}>LIVE</span>
+                    <span style={{ color: "#ef4444" }}>DROP</span>
+                </div>
             </div>
 
             <div className='l-card-div'>
                 <Slider {...settings} className="live-drop-cards">
                     {sliderItems.map((box, index) => (
-                        <div key={`${box.id}-${index}`} className={`single-card ${getCardColor(index)}`}
-                             style={{
-                                 display: 'flex',           
-                                 flexDirection: 'row',      // <--- HORIZONTAL STACK
-                                 alignItems: 'center',      // Center vertically
-                                 justifyContent: 'flex-start', // Start from left
-                                 overflow: 'hidden',        
-                                 padding: '10px 15px',      // Nice spacing
-                                 height: '80px'             // Fixed height prevents jumping
-                             }}
-                        >
-                            
+                        <div key={`${box.id}-${index}`} className={`single-card ${getCardColor(index)}`}>
                             {/* IMAGE (Icon on Left) */}
                             <img 
                                 src={box.image} 
                                 className="tip" 
                                 alt={box.title} 
-                                style={{ 
-                                    width: '50px',        // Fixed small width
-                                    height: '50px',       // Fixed small height
-                                    objectFit: 'cover',   
-                                    borderRadius: '8px',  
-                                    marginRight: '15px',  // Space between image and text
-                                    flexShrink: 0         // Prevent image from squishing
-                                }} 
                             />
                             
                             {/* TITLE (Text on Right) */}
-                            <p className="second-text" style={{ 
-                                margin: 0,
-                                fontSize: '15px', 
-                                fontWeight: 'bold',
-                                textAlign: 'left',      // Left align text
-                                whiteSpace: 'nowrap',   
-                                overflow: 'hidden', 
-                                textOverflow: 'ellipsis',
-                                color: 'white'          // Force white text just in case
-                            }}>
+                            <p className="second-text">
                                 {box.title}
                             </p>
                         </div>

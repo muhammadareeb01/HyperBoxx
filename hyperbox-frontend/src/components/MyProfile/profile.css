@@ -617,6 +617,92 @@
 }
 
 /* Optional: Make it white when you hover over it */
-.dark-modal .btn-close:hover {
-    opacity: 1;
+/* =========================================
+   PREMIUM HISTORY TABLE STYLING
+   ========================================= */
+
+.history-table-wrapper {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1px; /* To show border cleanly */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.custom-history-table {
+    --bs-table-bg: transparent !important; /* Override standard dark */
+    --bs-table-hover-bg: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+.custom-history-table thead th {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Exo', sans-serif;
+}
+
+/* Row Styling */
+.history-row {
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+.history-row td {
+    padding: 15px;
+    vertical-align: middle;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: none !important; /* Remove individual cell borders */
+}
+
+/* Row Hover Effect */
+.history-row:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+    transform: scale(1.005);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Badge Tweaks */
+.history-badge {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 6px 10px;
+}
+
+/* Amount Styling */
+.amount-cell {
+    font-family: 'Exo', monospace; /* Monospace for alignment */
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Custom Scrollbar for the table */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.2);
 }

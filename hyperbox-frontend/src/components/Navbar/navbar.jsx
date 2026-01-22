@@ -25,6 +25,15 @@ function Navbar() {
         setNavVisible(!isNavVisible);
     };
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (windowWidth <= 991 && isNavVisible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isNavVisible, windowWidth]);
+
     const handleLogout = async () => {
         try {
             await signOut(auth);
@@ -75,6 +84,14 @@ function Navbar() {
                             <div className="row1"> <Link to='authentication' className='linkStyle'>Authentication </Link></div>
                             <div className="row1"> <Link to='termsofservice' className='linkStyle'> Terms of services </Link></div>
                             <div className="row1"> <Link to='support' className='linkStyle'> Support </Link> </div>
+                            
+                            {/* Mobile Only Logout - Hidden on Desktop via CSS */}
+                            {userData && (
+                                <div className="row1 mobile-only-logout" onClick={handleLogout} style={{ cursor: 'pointer' }}> 
+                                    <span style={{ color: '#ef4444', fontWeight: 'bold' }}> LOG OUT </span>
+                                </div>
+                            )}
+                         
                         </div>
                         <div className="row2-main">
                             <div className='link_btn_main_div'>
@@ -105,20 +122,24 @@ function Navbar() {
                                             </button>
                                         </Link>
                                     </div>
-                                    <div className=" row2_btns amountbtn">
-                                        <span className='amount_span'>  
-                                            <span className='dollar'>$ </span> 
-                                            {userData ? Number(userData.balance).toFixed(2) : "0.00"}  
-                                        </span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="user_div" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    
+                    {/* Balance moved here */}
+                    {userData && (
+                        <div className="amountbtn" style={{ margin: 0 }}>
+                            <span className='amount_span' style={{ fontSize: '0.9rem', padding: '6px 12px' }}>  
+                                <span className='dollar'>$ </span> 
+                                {Number(userData.balance).toFixed(2)}  
+                            </span>
+                        </div>
+                    )}
 
+                       
                     {/* 2. Changed Redirect: If no user -> go to /login */}
                     <div>
                         <Link to={userData ? '/profile' : '/login'} className='linkStyle'>
@@ -138,33 +159,37 @@ function Navbar() {
                     </div>
 
                     {userData && (
-                        <div className='logout_btn_div'>
+                        <div className='logout_btn_div desktop-logout-container'>
                             <button 
-                                className="depositbtn" 
+                                className="userBtn" // Reuse userBtn class for consistent circular animation
                                 onClick={handleLogout}
                                 style={{ 
-                                    background: 'linear-gradient(to right, #d32f2f, #f44336)',
-                                    padding: '0 30px', 
-                                    height: '35px',
+                                    background: 'linear-gradient(135deg, #d32f2f, #f44336)', 
+                                    width: '40px', 
+                                    height: '40px', 
+                                    padding: 0,
+                                    borderRadius: '50%',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    gap: '10px'
+                                    border: '1px solid rgba(255,255,255,0.2)'
                                 }}
                                 title="Log Out"
                             >
-                                <FontAwesomeIcon 
-                                    icon={faSignOutAlt} 
-                                    className='iconmoney' 
-                                    style={{ fontSize: '18px', color: 'white' }} 
-                                />
+                                <div className='IconContainer' style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'transparent' }}>
+                                    <FontAwesomeIcon 
+                                        icon={faSignOutAlt} 
+                                        className='iconmoney' 
+                                        style={{ fontSize: '16px', color: 'white', margin: 0 }} 
+                                    />
+                                </div>
                             </button>
                         </div>
                     )}
 
                     {windowWidth <= 800 && (
                         <div className="toggle-button">
-                            <Hamburger toggled={isNavVisible} toggle={toggleNav} color="#FFFF" easing="ease-in" />
+                            <Hamburger toggled={isNavVisible} toggle={toggleNav} color="#FFFF" easing="ease-in" rounded size={24} />
                         </div>
                     )}
 

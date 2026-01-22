@@ -4,12 +4,18 @@ import LiveDrop from "./livedrop/livedrop";
 import '../../style/mainpage.css';
 import api from '../../utils/api'; // Ensure this points to your axios helper
 
+import CustomPagination from "../CustomPagination"; // Adjust path if needed
+
 export default function MainPage() {
     // 1. State for Data
     const [boxes, setBoxes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOrder, setSortOrder] = useState('high-low'); // Default sort
+    
+    // Pagination State
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 20;
 
     // 2. Fetch Boxes on Load
     useEffect(() => {
@@ -39,6 +45,12 @@ export default function MainPage() {
         }
     };
 
+    // Calculate Pagination
+    const sortedBoxes = getSortedBoxes();
+    const indexOfLastBox = currentPage * itemsPerPage;
+    const indexOfFirstBox = indexOfLastBox - itemsPerPage;
+    const currentBoxes = sortedBoxes.slice(indexOfFirstBox, indexOfLastBox);
+
     return (
         <>
             <div className="page-main">
@@ -47,7 +59,7 @@ export default function MainPage() {
                     <LiveDrop />
                 </div>
                 
-                <div className="main-heding">
+                <div className="main-heading">
                     <h2>Unbox Real-Life Items, and Get Them Shipped Directly To You!</h2>
                 </div>
 
@@ -77,11 +89,16 @@ export default function MainPage() {
                 {/* 4. Display Logic */}
                 <div className="main-page-div" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', padding: '20px' }}>
                     
-                    {loading && <h3 style={{color:'white'}}>Loading Boxes...</h3>}
+                    {loading && (
+                        <div className="loader-container">
+                            <span className="loader"></span>
+                            <h5 style={{color:'white', marginTop: '20px', letterSpacing:'1px', textTransform:'uppercase'}}>Loading Drops...</h5>
+                        </div>
+                    )}
                     
                     {error && <h3 style={{color:'red'}}>{error}</h3>}
 
-                    {!loading && !error && getSortedBoxes().map((box) => (
+                    {!loading && !error && currentBoxes.map((box) => (
                         // We pass the individual box data to the BoxCard component
                         <BoxCard key={box.id} box={box} />
                     ))}
@@ -89,6 +106,18 @@ export default function MainPage() {
                     {!loading && boxes.length === 0 && <h3 style={{color:'white'}}>No boxes found.</h3>}
 
                 </div>
+
+                {/* Pagination Controls */}
+                {!loading && !error && boxes.length > itemsPerPage && (
+                    <div className="d-flex justify-content-center pb-5">
+                         <CustomPagination 
+                            itemsPerPage={itemsPerPage} 
+                            totalItems={boxes.length} 
+                            currentPage={currentPage} 
+                            paginate={setCurrentPage} 
+                        />
+                    </div>
+                )}
 
             </div>
         </>

@@ -88,28 +88,28 @@ function Signup() {
 
                             <div className="input-block">
                                 <input 
-                                    className="input" type="text" id="username" required 
+                                    className="input" type="text" id="username" required placeholder=" "
                                     value={username} onChange={e => setUsername(e.target.value)}
                                 />
                                 <label htmlFor="username">Username</label>
                             </div>
                             <div className="input-block">
                                 <input 
-                                    className="input" type="email" id="email" required 
+                                    className="input" type="email" id="email" required placeholder=" "
                                     value={email} onChange={e => setEmail(e.target.value)}
                                 />
                                 <label htmlFor="email">Email</label>
                             </div>
                             <div className="input-block">
                                 <input 
-                                    className="input" type="password" id="pass" required 
+                                    className="input" type="password" id="pass" required placeholder=" "
                                     value={password} onChange={e => setPassword(e.target.value)}
                                 />
                                 <label htmlFor="pass">Password</label>
                             </div>
                             <div className="input-block">
                                 <input 
-                                    className="input" type="password" id="r_pass" required 
+                                    className="input" type="password" id="r_pass" required placeholder=" "
                                     value={repeatPass} onChange={e => setRepeatPass(e.target.value)}
                                 />
                                 <label htmlFor="r_pass">Repeat Password</label>
