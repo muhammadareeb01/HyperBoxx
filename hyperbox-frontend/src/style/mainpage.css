@@ -39,6 +39,8 @@
 .btns-flex-div {
     display: flex;
     justify-content: space-between;
+    position: relative; /* Ensure it's above background */
+    z-index: 10;
 }
 
 .popular-all-mystery {
@@ -62,6 +64,8 @@
     font-family: PoppinsLight;
     border-radius: 8px 100px;
     transition: 1.0s all;
+    cursor: pointer; /* Add pointer cursor */
+    position: relative; /* Ensure z-index works */
 }
 
 .btn-select-box {
@@ -73,48 +77,79 @@
     font-family: PoppinsLight;
     border-radius: 100px 10px 10px 100px;
     transition: 1.0s all;
+    cursor: pointer;
+    position: relative;
+    appearance: none; /* Remove default arrow for custom styling if needed, keeping simple for now */
+    -webkit-appearance: none; /* for safari */
+    -moz-appearance: none; /* for firefox */
+    text-align: center;
 }
 
+/* Add hover effect for better feedback */
+.btn-select-box:hover,
 .btn-all-mystery-box:hover,
-.btn-most-popular:hover,
-.btn-select-box:hover {
-
-    background-color: rgba(255, 255, 255, 0.9);
-    transition: 1.5s all;
+.btn-most-popular:hover {
+     background-color: rgba(255, 255, 255, 0.9);
+    transition: 0.5s all; /* Faster transition for snappier feel */
     font-weight: bold;
     color: black;
+    transform: scale(1.05); /* Subtle scale up */
 }
 
 
 /* end btns */
 
 
-.main-heading{
+.main-heading {
     text-align: center;
     width: 100%;
- 
-
-    /* margin-top: 2%; */
-    font-family: PoppinsItalic;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 5;
 }
 
 .main-heading h2 {
-    font-size: 33px;
-    color: #FFFF;
+    font-size: 36px;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Glowing Text Animation */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.4);
+        transform: scale(1.02);
+    }
 }
 
 .flex-box-div {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    justify-content: center; /* Center the grid */
+    align-items: flex-start;
+    width: 95%; /* Use most of the page width */
+    margin: 0 auto; /* Center the container */
     flex-wrap: wrap;
+    gap: 2%; /* Gap between items */
+    padding-bottom: 50px;
 }
 
 .subbox {
-    width: 17%;
-    margin: 3% 0;
+    width: 23%; /* 4 items per row: (100% - 3*2% gap) / 4 ~= 23.5% */
+    margin-bottom: 30px; /* Vertical spacing */
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
 }
 
 /* Loader Styles */
@@ -122,7 +157,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px; /* Or adjust as needed */
+    min-height: 400px;
     width: 100%;
     flex-direction: column;
 }
@@ -173,201 +208,62 @@
     100% { transform: rotate(-360deg); }
 }
 
-@media screen and (max-width:900px) {
+/* Responsive Breakpoints */
 
+/* Tablet / Small Laptop: 3 items per row */
+@media screen and (max-width: 1100px) {
+    .subbox {
+        width: 31%; /* 3 items per row */
+    }
+    
+    .main-heading h2 {
+        font-size: 28px;
+    }
+}
+
+/* Mobile / Small Tablet: 2 items per row */
+@media screen and (max-width: 768px) {
+    .subbox {
+        width: 48%; /* 2 items per row */
+    }
+    
     .flex-box-div {
+        width: 98%;
+        gap: 2%; 
+    }
+
+    .main-heading h2 {
+        font-size: 24px;
+    }
+    
+    .btns-flex-div {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .btns-flex-div > div {
+        margin: 0;
+        width: 100%;
         display: flex;
-        justify-content: space-between;
-
-        width: 80%;
-        margin: auto;
-        flex-wrap: wrap;
+        justify-content: center;
     }
-
-    .subbox {
-        width: 30%;
-        margin: 5% auto;
-        /* justify-content: center; */
-        /* align-items: center; */
-        /* box-sizing: border-box; */
-    }
-
-    .main-heding h2 {
-        font-size: 29px;
-    }
-
 }
 
-
-
-
-@media screen and (min-width:500px) and (max-width:600px) {
+/* Small Mobile: 1 item per row (optional, or keep 2 small ones) */
+@media screen and (max-width: 450px) {
     .subbox {
-        width: 29% !important;
-        margin: 5% auto;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
+        width: 95%; /* 1 item per row for very small screens */
+    }
+    
+    .main-heading h2 {
+        font-size: 20px;
     }
 
-}
-
-
-
-
-@media screen and (max-width:700px) {
-
-
-    .main-heding h2 {
-        font-size: 25px;
-    }
-
-    .subbox {
-        width: 30%;
-        margin: 5% auto;
-        justify-content: center;
-        align-items: center;
-        box-sizing: border-box;
-    }
-
-
-    .flex-box-div {
-        width: 90%;
-
-    }
-
+    .btn-all-mystery-box,
+    .btn-most-popular,
     .btn-select-box {
-        padding: 10px 10px;
-        border: none;
         font-size: 11px;
-
-    }
-
-    .btn-all-mystery-box,
-    .btn-most-popular {
-        padding: 5px 20px;
-        margin-left: 5px;
-        font-size: 10px;
-        border-radius: 5px 30px;
-
-    }
-
-}
-
-@media screen and (max-width:500px) {
-
-
-    .main-heding h2 {
-        font-size: 22px;
-    }
-
-
-    .subbox {
-        width: 40%;
-
-    }
-
-}
-
-@media screen and (max-width:350px) {
-
-    .main-heding h2 {
-        font-size: 20px;
-    }
-
-
-
-}
-
-
-@media screen and (max-width:400px) {
-
-    .btns-flex-div>div {
-        margin-top: 3%;
-        margin-left: 5%;
-        margin-right: 0.0%;
-    }
-
-    .main-heding h2 {
-        font-size: 20px;
-    }
-
-
-
-
-}
-
-@media screen and (min-width:950px) and (max-width:1100px) {
-    .subbox {
-        width: 25%;
-
-    }
-
-    .flex-box-div {
-        width: 95%;
-        margin: auto;
-
-    }
-
-}
-
-
-@media screen and (min-width:850px) and (max-width:949px) {
-    .subbox {
-        width: 25%;
-
-    }
-
-    .flex-box-div {
-        width: 93%;
-        margin: auto;
-
-    }
-
-}
-
-
-
-@media screen and (max-width:300px) {
-    .subbox {
-        width: 50%;
-
-        margin-top: 5%;
-
-    }
-
-    .flex-box-div {
-
-        display: block;
-
-    }
-
-    .btns-flex-div>div {
-        margin-top: 3%;
-        margin-left: 5%;
-        margin-right: 0.0%;
-    }
-
-    .main-heding h2 {
-        font-size: 17px;
-        width: 90%;
-
-    }
-
-
-    .btn-select-box {
-
-        font-size: 7px;
-
-    }
-
-    .btn-all-mystery-box,
-    .btn-most-popular {
-
-        margin-right: 0px;
-        overflow-x: hidden;
-        font-size: 7px;
-
-
+        padding: 8px 15px;
     }
 }

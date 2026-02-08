@@ -55,79 +55,83 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
 
-/* Slider Container */
+/* Slider Container Replacement -> Marquee */
 .l-card-div {
     flex-grow: 1;
     width: calc(100% - 120px); /* Subtract label width */
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 20px, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black 95%, transparent);
+    position: relative;
+    /* Fade Masks for smooth entry/exit appearance */
+    mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
 }
 
-.slick-list {
-    overflow: visible !important; 
+.marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
 }
 
-.slick-slide {
-    padding: 0 6px; /* Gap between cards */
+.marquee-content {
+    display: flex;
+    gap: 15px; /* Spacing between cards */
+    animation: scroll-left 40s linear infinite; /* Adjust speed here (lower = faster) */
+    width: max-content; /* Ensure width fits all items */
+    padding-left: 15px; /* Initial padding matches gap */
 }
 
-/* Card Styling */
-.live-drop-cards .single-card {
-    display: flex !important; /* Override slick display */
+/* Pause on hover for interaction */
+.marquee-wrapper:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Move half the length (since we duplicate the list) */
+    }
+}
+
+/* Card Styling Updates for Flex Layout */
+.single-card {
+    display: flex;
     flex-direction: row;
     align-items: center;
-    height: 70px;
+    height: 60px; /* Slightly compact */
+    min-width: 200px; /* Fixed width for consistent flow */
     border-radius: 12px;
     padding: 8px 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #181b21;
     position: relative;
-    overflow: hidden;
-    background: #181b21; /* Fallback */
+    flex-shrink: 0; /* Prevent squishing */
 }
 
-/* Card Variants (Gradients) */
-.live-drop-cards .red {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
-    border-color: rgba(239, 68, 68, 0.2);
-}
-
-.live-drop-cards .blue {
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
-    border-color: rgba(59, 130, 246, 0.2);
-}
-
-.live-drop-cards .green {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
-    border-color: rgba(16, 185, 129, 0.2);
-}
-
-.live-drop-cards .burgundy {
-    background: linear-gradient(135deg, rgba(217, 70, 239, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
-    border-color: rgba(217, 70, 239, 0.2);
-}
-
-.live-drop-cards .yellow {
-    background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(20, 20, 20, 0.8) 100%);
-    border-color: rgba(234, 179, 8, 0.2);
-}
-
+/* Specific Card Colors */
+.single-card.red { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(20, 20, 20, 0.9)); border-color: rgba(239, 68, 68, 0.3); }
+.single-card.blue { background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(20, 20, 20, 0.9)); border-color: rgba(59, 130, 246, 0.3); }
+.single-card.green { background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 20, 20, 0.9)); border-color: rgba(16, 185, 129, 0.3); }
+.single-card.burgundy { background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(20, 20, 20, 0.9)); border-color: rgba(217, 70, 239, 0.3); }
+.single-card.yellow { background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(20, 20, 20, 0.9)); border-color: rgba(234, 179, 8, 0.3); }
 
 /* Hover Effects */
-.live-drop-cards .single-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.3);
+.single-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
+    z-index: 10;
 }
 
 /* Image Styling */
-.live-drop-cards .single-card img.tip {
-    width: 45px;
-    height: 45px;
-    object-fit: contain; /* Changed to contain to show full item */
-    border-radius: 8px;
+.single-card img.tip {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 6px;
     margin-right: 12px;
     background: rgba(0,0,0,0.3);
     padding: 4px;
@@ -135,37 +139,37 @@
 }
 
 /* Text Styling */
-.live-drop-cards .single-card p.second-text {
-    font-size: 0.85rem;
+.single-card p.second-text {
+    font-size: 0.8rem;
     font-weight: 700;
-    color: #ffffff !important; /* Force pure white */
+    color: #e4e4e7;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: left;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-    font-family: 'Inter', sans-serif;
+    max-width: 130px; /* Ensure text doesn't overflow card */
 }
+
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    .live-drop-cards-text-div .text-live {
-        width: 80px;
+    .live-drop-cards-text-div .text-live { width: 80px; }
+    .l-card-div { width: calc(100% - 80px); }
+    .live-head { font-size: 11px; flex-direction: column; gap: 2px; }
+    
+    .single-card {
+        min-width: 160px; /* Smaller cards on mobile */
+        height: 50px;
+        padding: 5px 10px;
     }
     
-    .l-card-div {
-        width: calc(100% - 80px);
-    }
-
-    .live-head {
-        font-size: 12px;
-        flex-direction: column;
-        gap: 4px;
-        line-height: 1.2;
+    .single-card img.tip {
+        width: 30px;
+        height: 30px;
     }
     
-    .live-head span {
-        display: block;
+    .single-card p.second-text {
+        font-size: 0.7rem;
+        max-width: 100px;
     }
 }

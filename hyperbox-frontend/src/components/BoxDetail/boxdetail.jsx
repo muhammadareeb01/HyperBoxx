@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../../style/boxlistStyle.css";
-import { NikeCard } from "../MainPage/boxes/boxcard/boxcard";
-import { ItemWin } from "../MainPage/boxes/boxcard/winning-items";
+// import { NikeCard } from "../MainPage/boxes/boxcard/boxcard"; // OLD
+// import { ItemWin } from "../MainPage/boxes/boxcard/winning-items"; // OLD
+import { UniversalBoxCard } from "../MainPage/boxes/boxcard/UniversalBoxCard"; // NEW
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { useParams } from "react-router-dom";
 import HorizontalSpinner from "../MainPage/boxes/WheelSpinner/wheelspinner";
-import api from "../../utils/api"; // Your Axios helper
+import api from "../../utils/api";
 
 // Color mapping for consistency
 const colorMap = {
@@ -75,23 +76,37 @@ const BoxDetails = () => {
     return <div className="boxinfo-list-maindiv">Box not found</div>;
   }
 
-  // Determine colors (Use default blue if API doesn't send color)
-  const boxColor = box.color || "blue";
+  // Determine colors consistent with Main Page
+  const priceString = (box.price !== undefined && box.price !== null) ? String(box.price) : "0";
+  const numericPrice = parseFloat(priceString.replace("$", "").replace(",", ""));
+  
+  let calculatedColor = "green";
+  if (numericPrice >= 1000) {
+      calculatedColor = "gold";
+  } else if (numericPrice >= 100) {
+      calculatedColor = "red"; 
+  } else if (numericPrice >= 50) {
+      calculatedColor = "purple";
+  } else if (numericPrice >= 10) {
+      calculatedColor = "blue";
+  }
+
+  // Use API color if explicitly set, otherwise use calculated price color
+  const boxColor = box.color || calculatedColor;
   const arrowColor = colorMap[boxColor] || colorMap.default;
 
   return (
     <>
       <div className="boxinfo-list-maindiv">
         
-        {/* --- 1. BOX INFO CARD --- */}
-        <div style={{ margin: "auto" }}>
-          <NikeCard
-            title={box.name || box.title} // API might send 'name' or 'title'
+        {/* --- 1. BOX INFO CARD (New Universal Component) --- */}
+        <div style={{ margin: "auto", padding: "20px 0" }}>
+          <UniversalBoxCard
+            title={box.name || box.title}
             price={box.price}
             color={boxColor}
             img={box.image}
-            items={items}        // Pass the fetched items
-            onOpen={handleOpenBox}
+            onOpen={handleOpenBox} // Passing onOpen renders the 'Open Box' button
           />
         </div>
 
@@ -125,12 +140,14 @@ const BoxDetails = () => {
         >
           {items.map((item, index) => (
             <div key={item.id || index}>
-              <ItemWin
+              {/* Reuse UniversalBoxCard for Items */}
+              <UniversalBoxCard
                 title={item.name}
-                itemImage={item.image} // Use image from individual item API
-                color={boxColor}
-                chance={item.chance}
-                price={item.value} // Pass value to show price if component supports it
+                img={item.image}
+                color={boxColor} // Match box theme
+                price={item.value} // Show estimated value
+                chance={item.chance} // Show win chance
+                // No onOpen prop here, so button won't render
               />
             </div>
           ))}
@@ -140,7 +157,7 @@ const BoxDetails = () => {
       {/* --- 4. GAME SPINNER --- */}
       {showSpinner && (
         <HorizontalSpinner
-          items={items} // Pass dynamic items to spinner
+          items={items}
           onClose={handleCloseSpinner}
           color={arrowColor}
         />

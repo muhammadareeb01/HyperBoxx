@@ -1,0 +1,97 @@
+.custom-dropdown-container {
+    position: relative;
+    width: 200px;
+    font-family: 'Poppins', sans-serif;
+    z-index: 100; /* Ensure it stays above other content */
+}
+
+.dropdown-header {
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px; /* Pill shape */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 10px;
+    margin-bottom: 2px;
+}
+
+.dropdown-header.open .dropdown-arrow {
+    transform: rotate(-135deg);
+    margin-bottom: -2px;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: 115%; /* Slight gap */
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;  /* Solid dark background for readability */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    
+    /* Animation Initial State */
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dropdown-list.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: #ccc;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding-left: 25px; /* Slight slide effect */
+}
+
+.dropdown-item.selected {
+    background: linear-gradient(90deg, #d90429, #ef233c); /* Brand red */
+    color: white;
+    font-weight: 700;
+}

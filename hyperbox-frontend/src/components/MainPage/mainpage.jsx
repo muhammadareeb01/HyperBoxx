@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import BoxCard from "./boxcard";
 import LiveDrop from "./livedrop/livedrop";
+import CustomDropdown from './CustomDropdown'; // Import here
 import '../../style/mainpage.css';
-import api from '../../utils/api'; // Ensure this points to your axios helper
-
-import CustomPagination from "../CustomPagination"; // Adjust path if needed
+import api from '../../utils/api'; 
+import CustomPagination from "../CustomPagination";
 
 export default function MainPage() {
     // 1. State for Data
@@ -63,6 +63,7 @@ export default function MainPage() {
                     <h2>Unbox Real-Life Items, and Get Them Shipped Directly To You!</h2>
                 </div>
 
+
                 <div className="btns-flex-div">
                     <div className="popular-all-mystery">
                         <div>
@@ -73,16 +74,14 @@ export default function MainPage() {
                         </div>
                     </div>
                     <div>
-                        {/* Update State on Change */}
-                        <select 
-                            name="boxes-choose" 
-                            className="btn-select-box"
-                            onChange={(e) => setSortOrder(e.target.value)}
+                        <CustomDropdown 
+                            options={[
+                                { value: 'high-low', label: 'HIGHEST TO LOWEST' },
+                                { value: 'low-high', label: 'LOWEST TO HIGHEST' }
+                            ]}
                             value={sortOrder}
-                        >
-                            <option value="high-low">Highest to Lowest</option>
-                            <option value="low-high">Lowest to Highest</option>
-                        </select>
+                            onChange={(newValue) => setSortOrder(newValue)}
+                        />
                     </div>
                 </div>
 

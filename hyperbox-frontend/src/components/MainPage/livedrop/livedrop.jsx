@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import './livedrop.css'; 
-
-// Firestore Imports
 import { getFirestore, collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 
 const LiveDrop = () => {
@@ -30,32 +25,6 @@ const LiveDrop = () => {
         return () => unsubscribe();
     }, [db]);
 
-    // --- LOOPING LOGIC ---
-    const sliderItems = recentBoxes.length > 0 && recentBoxes.length < 10
-        ? [...recentBoxes, ...recentBoxes, ...recentBoxes] 
-        : recentBoxes;
-
-    // --- SLIDER SETTINGS ---
-    const settings = {
-        infinite: true,
-        speed: 3000, // Slower continuous scroll
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: 'linear', // Continuous effect
-        swipeToSlide: true, 
-        pauseOnHover: true, 
-        dots: false,
-        arrows: false,
-        responsive: [
-            { breakpoint: 1400, settings: { slidesToShow: 5 } },
-            { breakpoint: 1024, settings: { slidesToShow: 4 } },
-            { breakpoint: 768, settings: { slidesToShow: 3 } },
-            { breakpoint: 480, settings: { slidesToShow: 1.5 } } // Show part of next card
-        ],
-    };
-
     // Card Colors Helper
     const getCardColor = (index) => {
         const colors = ['red', 'green', 'blue', 'burgundy', 'yellow'];
@@ -63,6 +32,20 @@ const LiveDrop = () => {
     };
 
     if (recentBoxes.length === 0) return null;
+
+    // --- INFINITE SCROLL LOGIC ---
+    // We duplicate the list to create a seamless loop.
+    // CSS translates -50% (half width), so we need 2 full sets.
+    // If the list is short, we repeat it more times to fill width.
+    const minimalItemCount = 20; // Ensure we have enough items to scroll smoothly
+    let displayItems = [...recentBoxes];
+    
+    while (displayItems.length < minimalItemCount) {
+        displayItems = [...displayItems, ...recentBoxes];
+    }
+    // Now double it for the seamless marquee effect
+    const marqueeItems = [...displayItems, ...displayItems];
+
 
     return (
         <div className='live-drop-cards-text-div'>
@@ -75,23 +58,25 @@ const LiveDrop = () => {
             </div>
 
             <div className='l-card-div'>
-                <Slider {...settings} className="live-drop-cards">
-                    {sliderItems.map((box, index) => (
-                        <div key={`${box.id}-${index}`} className={`single-card ${getCardColor(index)}`}>
-                            {/* IMAGE (Icon on Left) */}
-                            <img 
-                                src={box.image} 
-                                className="tip" 
-                                alt={box.title} 
-                            />
-                            
-                            {/* TITLE (Text on Right) */}
-                            <p className="second-text">
-                                {box.title}
-                            </p>
-                        </div>
-                    ))}
-                </Slider>
+                <div className="marquee-wrapper">
+                    <div className="marquee-content">
+                        {marqueeItems.map((box, index) => (
+                            <div key={`${box.id}-${index}`} className={`single-card ${getCardColor(index)}`}>
+                                {/* IMAGE (Icon on Left) */}
+                                <img 
+                                    src={box.image} 
+                                    className="tip" 
+                                    alt={box.title} 
+                                />
+                                
+                                {/* TITLE (Text on Right) */}
+                                <p className="second-text">
+                                    {box.title}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
