@@ -3,6 +3,16 @@ const admin = require('firebase-admin');
 // 1. Verify if the user is Logged In
 const verifyToken = async (req, res, next) => {
   try {
+
+    // ==========================================   
+    // DEV HACK: Bypass for Postman Testing ONLY
+    // ==========================================
+    // if (req.headers['x-postman-dev-uid']) {
+    //     req.user = { uid: req.headers['x-postman-dev-uid'] };
+    //     return next();
+    // }
+    // ==========================================
+
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({ error: 'Unauthorized: No token provided' });

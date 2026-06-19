@@ -8,7 +8,8 @@ const crypto = require('crypto');
 // @access  Public
 const registerUser = async (req, res) => {
   try {
-    const { username, email, password, uid } = req.body;
+    // Added 'referredBy' to capture an affiliate code if they use one during signup
+    const { username, email, password, uid, referredBy } = req.body;
 
     // 1. Validation
     if (!username || !email || !password) {
@@ -46,6 +47,17 @@ const registerUser = async (req, res) => {
         nonce: 0,           // Starts at 0
         hashedServerSeed    // PUBLIC (Proof)
       },
+      
+      // ==========================================
+      // NEW SCHEMA: Affiliate & Free Box Tracking
+      // ==========================================
+      affiliateCode: null,              // Stored as null until they create one on the Affiliates Page
+      referredBy: referredBy || null,   // The code of the friend who referred them (if provided)
+      affiliateBalance: 0,              // Unclaimed commission from referrals (Starts at $0)
+      lifetimeBoxesOpened: 0,           // Counter for the 8-box unlock requirements
+      lastFreeBoxClaims: {},            // Map to track 24-hour cooldowns (e.g., { "box_1": "Timestamp" })
+      // ==========================================
+
       createdAt: new Date().toISOString(),
       uid: uid
     };
@@ -73,4 +85,23 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+// @desc    Get user profile data (for Affiliate Dashboard)
+// @route   GET /api/users/profile
+// @access  Private
+const getUserProfile = async (req, res) => {
+    try {
+        const userRef = db.collection('users').doc(req.user.uid);
+        const userDoc = await userRef.get();
+
+        if (!userDoc.exists) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json({ success: true, user: userDoc.data() });
+    } catch (error) {
+        console.error("Profile Fetch Error:", error);
+        res.status(500).json({ error: 'Server Error' });
+    }
+};
+
+module.exports = { registerUser, getUserProfile };

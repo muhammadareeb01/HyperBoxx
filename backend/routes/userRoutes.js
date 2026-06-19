@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser } = require('../controllers/userController');
+const { registerUser, getUserProfile } = require('../controllers/userController');
 const {verifyToken, verifyAdmin} = require('../middleware/authMiddleware');
 const admin = require('firebase-admin');
 
@@ -117,5 +117,7 @@ router.put('/:id/balance', verifyToken, verifyAdmin, async (req, res) => {
 
 // Define the route
 router.post('/register', registerUser);
+router.get('/profile', verifyToken, getUserProfile);
+
 
 module.exports = router;

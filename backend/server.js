@@ -54,6 +54,9 @@ app.use("/api/boxes", require("./routes/boxRoutes"));
 app.use("/api/upload", require("./routes/uploadRoutes"));
 app.use("/api/game", require("./routes/gameRoutes"));
 
+app.use("/api/affiliate", require('./routes/affiliateRoutes'));
+app.use('/api/free-boxes', require('./routes/freeBoxRoutes')); // <-- ADD THIS
+
 // --- MAKE UPLOADS FOLDER STATIC ---
 // This lets you access images at http://localhost:5000/uploads/image.jpg
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
@@ -419,47 +422,135 @@ app.post(
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    // Handle the event
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object;
-      const userId = session.client_reference_id;
-      const amountAdded = session.amount_total / 100; // Cents to Dollars
-      const paymentId = session.payment_intent;
+    // // Handle the event
+    // if (event.type === "checkout.session.completed") {
+    //   const session = event.data.object;
+    //   const userId = session.client_reference_id;
+    //   const amountAdded = session.amount_total / 100; // Cents to Dollars
+    //   const paymentId = session.payment_intent;
 
-      console.log(`Processing deposit of $${amountAdded} for ${userId}`);
+    //   console.log(`Processing deposit of $${amountAdded} for ${userId}`);
 
-      try {
-        await db.runTransaction(async (t) => {
-          const userRef = db.collection("users").doc(userId);
-          const txRef = db.collection("all_transactions").doc(paymentId);
+    //   try {
+    //     await db.runTransaction(async (t) => {
+    //       const userRef = db.collection("users").doc(userId);
+    //       const txRef = db.collection("all_transactions").doc(paymentId);
 
-          const txDoc = await t.get(txRef);
-          if (txDoc.exists) return; // Already processed
+    //       const txDoc = await t.get(txRef);
+    //       if (txDoc.exists) return; // Already processed
 
-          const userDoc = await t.get(userRef);
-          if (!userDoc.exists) throw new Error("User not found");
+    //       const userDoc = await t.get(userRef);
+    //       if (!userDoc.exists) throw new Error("User not found");
 
-          const newBalance =
-            (Number(userDoc.data().balance) || 0) + amountAdded;
+    //       const newBalance =
+    //         (Number(userDoc.data().balance) || 0) + amountAdded;
 
-          // Update Balance & Log Transaction
-          t.update(userRef, { balance: newBalance });
-          t.set(txRef, {
-            type: "DEPOSIT",
-            amount: amountAdded,
-            userId: userId,
-            email: userDoc.data().email,
-            stripePaymentId: paymentId,
-            timestamp: admin.firestore.FieldValue.serverTimestamp(),
-            description: "Stripe Deposit",
-            status: "completed",
-          });
-        });
-        console.log("Balance updated successfully");
-      } catch (error) {
-        console.error("Transaction failed:", error);
-        return res.status(500).send("Internal Error");
-      }
+    //       // Update Balance & Log Transaction
+    //       t.update(userRef, { balance: newBalance });
+    //       t.set(txRef, {
+    //         type: "DEPOSIT",
+    //         amount: amountAdded,
+    //         userId: userId,
+    //         email: userDoc.data().email,
+    //         stripePaymentId: paymentId,
+    //         timestamp: admin.firestore.FieldValue.serverTimestamp(),
+    //         description: "Stripe Deposit",
+    //         status: "completed",
+    //       });
+    //     });
+    //     console.log("Balance updated successfully");
+    //   } catch (error) {
+    //     console.error("Transaction failed:", error);
+    //     return res.status(500).send("Internal Error");
+    //   }
+    // }
+    // Inside app.post('/webhook', ...)
+    if (event.type === 'checkout.session.completed') {
+        const session = event.data.object;
+        const userId = session.client_reference_id;
+        const amountAdded = session.amount_total / 100; // Cents to Dollars
+        const paymentId = session.payment_intent;
+
+        try {
+            await db.runTransaction(async (t) => {
+                const userRef = db.collection('users').doc(userId);
+                const txRef = db.collection('all_transactions').doc(paymentId);
+
+                // 1. Idempotency Check (Prevent duplicate payouts)
+                const txDoc = await t.get(txRef);
+                if (txDoc.exists) return; 
+
+                // 2. Fetch Depositing User
+                const userDoc = await t.get(userRef);
+                if (!userDoc.exists) throw new Error("User not found");
+                const userData = userDoc.data();
+
+                // 3. AFFILIATE COMMISSION LOGIC 
+                let referrerRef = null;
+                let referrerDoc = null;
+                let commissionAmount = 0;
+
+                // Check if they were referred by someone
+                if (userData.referredBy) {
+                    // Look up who owns this code
+                    const codeRef = db.collection('affiliate_codes').doc(userData.referredBy);
+                    const codeDoc = await t.get(codeRef);
+
+                    if (codeDoc.exists) {
+                        const ownerUid = codeDoc.data().ownerUid;
+                        referrerRef = db.collection('users').doc(ownerUid);
+                        referrerDoc = await t.get(referrerRef);
+                        
+                        // Calculate 5% Commission safely (using cents to avoid JS float errors)
+                        const amountInCents = session.amount_total; // Already in cents from Stripe
+                        const commissionInCents = Math.floor(amountInCents * 0.05); // 5% cut
+                        commissionAmount = commissionInCents / 100; // Back to dollars
+                    }
+                }
+
+                // --- WRITE OPERATIONS ---
+                
+                // A. Update Depositor's Balance
+                const newBalance = (Number(userData.balance) || 0) + amountAdded;
+                t.update(userRef, { balance: newBalance });
+
+                // B. Update Referrer's Affiliate Balance (If applicable)
+                if (referrerDoc && referrerDoc.exists && commissionAmount > 0) {
+                    const newAffiliateBalance = (Number(referrerDoc.data().affiliateBalance) || 0) + commissionAmount;
+                    t.update(referrerRef, { affiliateBalance: newAffiliateBalance });
+                }
+
+                // C. Log Deposit Transaction
+                t.set(txRef, {
+                    type: 'DEPOSIT',
+                    amount: amountAdded,
+                    userId: userId,
+                    email: userData.email || 'No Email',
+                    stripePaymentId: paymentId,
+                    timestamp: admin.firestore.FieldValue.serverTimestamp(),
+                    description: 'Stripe Deposit',
+                    status: 'completed'
+                });
+
+                // D. Log Commission Transaction (Audit Trail for the Referrer)
+                if (referrerDoc && referrerDoc.exists && commissionAmount > 0) {
+                    const commTxRef = db.collection('all_transactions').doc(`${paymentId}_commission`);
+                    t.set(commTxRef, {
+                        type: 'COMMISSION_EARNED',
+                        amount: commissionAmount,
+                        userId: referrerDoc.id, // The guy who got paid
+                        fromUserId: userId,     // The guy who deposited
+                        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+                        description: `5% Commission from ${userData.username || 'referred user'}`,
+                        status: 'completed'
+                    });
+                }
+            });
+            console.log(`✅ Payment success: $${amountAdded} to ${userId}`);
+        } catch (error) {
+            console.error('❌ Transaction failed:', error);
+            return res.status(500).send('Internal Error');
+        }
     }
 
     res.json({ received: true });

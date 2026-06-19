@@ -2,14 +2,16 @@ import './deposit.css';
 import visa from '../../assestes/deposit/visa.png';
 import card from '../../assestes/deposit/card.png';
 import { useState } from 'react';
-import { getFunctions, httpsCallable } from 'firebase/functions'; // Import Functions
+import { getFunctions } from 'firebase/functions'; // Import Functions
 import { getAuth } from 'firebase/auth'; // Import Auth
 
 function Deposit() {
     // --- STATE & HOOKS ---
     const [amount, setAmount] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showComingSoon, setShowComingSoon] = useState(false);
     
+    // eslint-disable-next-line no-unused-vars
     const functions = getFunctions();
     const auth = getAuth();
 
@@ -26,8 +28,9 @@ function Deposit() {
     };
 
     const handleDecrement = () => {
-        if (amount > 0) {
-            setAmount((prev) => (parseInt(prev) || 0) - 1);
+        const currentAmount = parseInt(amount) || 0;
+        if (currentAmount > 0) {
+            setAmount(currentAmount - 1);
         }
     };
 
@@ -40,7 +43,6 @@ function Deposit() {
 
     // --- SECURE DEPOSIT FUNCTION ---
     const handleCreditCardPayment = async () => {
-        const auth = getAuth();
         const user = auth.currentUser;
 
         if (!user) {
@@ -86,6 +88,10 @@ function Deposit() {
         }
     };
 
+    const toggleComingSoon = () => {
+        setShowComingSoon(!showComingSoon);
+    };
+
     return (
         <>
             <div className="deposit_main">
@@ -103,26 +109,24 @@ function Deposit() {
                         <div className='dec_div'>
                             <button onClick={handleDecrement} className='dec'>-</button>
                         </div>
-                        <div className="deposit-form-control" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <span style={{ fontSize: '2.5rem', color: '#fff', fontWeight: '700', marginRight: '5px' }}>$</span>
+                        <div className="deposit-form-control">
                             <input
-                                className="inputz"
+                                className="input inputz input-alt"
                                 type="text"
-                                value={amount}
+                                value={amount === 0 ? '' : amount}
                                 onChange={handleInputChange}
                                 placeholder='0'
                             />
+                            <span className="input-border input-border-alt"></span>
                         </div>
                         <div >
                             <button onClick={handleIncrement} className='add'>+</button>
                         </div>
                     </div>
-                    
                     <div className='payment_btns'>
-                        {/* 1. CREDIT CARD BUTTON (Connected to Stripe) */}
                         <div className='div1'>
                             <button 
-                                className='credit_card_btn' 
+                                className='credit_card_btn'
                                 onClick={handleCreditCardPayment}
                                 disabled={loading}
                                 style={{ opacity: loading ? 0.7 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
@@ -130,9 +134,26 @@ function Deposit() {
                                 <b>{loading ? 'PROCESSING...' : 'PAY WITH CREDIT CARD / SQUARE'}</b>
                             </button>
                         </div>
-
-                       
-                       
+                        <div className='div2'>
+                            <button className='cash_app_btn' onClick={toggleComingSoon}>
+                                <span className="span-mother">
+                                    <span>PAY</span>
+                                    <span> WITH</span>
+                                    <span>PAY</span>
+                                    <span>PAL</span>
+                                </span>
+                                <span className="span-mother2">
+                                    <span>PAY</span>
+                                    <span> WITH</span>
+                                    <span>PAY</span>
+                                    <span>PAL</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div className='div3'>
+                            <button className='crypto' onClick={toggleComingSoon}>Pay With Crypto  (10% Bonus)
+                            </button>
+                        </div>
                     </div>
 
                     <div className='cards-payment'>
@@ -142,11 +163,31 @@ function Deposit() {
                                     <img src={v.pic} alt="" />
                                 </div>
                             )
-                        })}
+                        })
+                        }
                     </div>
                 </div>
+
             </div>
+
+            {showComingSoon && (
+                <div className="modal_overlay" onClick={toggleComingSoon}>
+                    <div className="modal_content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal_header">
+                            <div className="coming_soon_icon">🚀</div>
+                        </div>
+                        <div className="modal_body">
+                            <h2>Coming Soon!</h2>
+                            <p>We are working hard to bring this payment method to you. Stay tuned!</p>
+                        </div>
+                        <div className="modal_footer">
+                            <button className="close_modal_btn" onClick={toggleComingSoon}>Got it!</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
-    );
+    )
 }
+
 export default Deposit;
