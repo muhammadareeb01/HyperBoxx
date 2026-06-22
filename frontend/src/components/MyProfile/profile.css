@@ -2,7 +2,7 @@
 
     /* height: 90vh; */
     width: 100%;
-    background-color: #15191c;
+    /* background-color: #15191c; */
     display: flex;
     flex-direction: row;
     color: rgba(255, 255, 255, 0.7);
@@ -43,8 +43,8 @@
 
 
 .area {
-    background: #15191c;
-    background: -webkit-linear-gradient(to left, #8f94fb, #15191c);
+    /* background: #15191c; */
+    /* background: -webkit-linear-gradient(to left, #8f94fb, #15191c); */
     width: 100%;
     height: auto;
 

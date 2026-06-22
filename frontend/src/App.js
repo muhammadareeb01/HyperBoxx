@@ -28,7 +28,7 @@ function App() {
   const isPlainPage = location.pathname.startsWith('/admin');
 
   return (
-    <>
+    <div className="app-global-bg">
       <div>
         {!isPlainPage && <Navbar />}
       </div>
@@ -146,7 +146,7 @@ function App() {
       </Routes>
 
       {!isPlainPage && <Footer />}
-    </>
+    </div>
   );
 }
 

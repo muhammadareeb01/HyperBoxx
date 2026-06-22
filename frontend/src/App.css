@@ -23,3 +23,27 @@
     background-color: #21272b;
     opacity: 0.4;
 }
+
+/* Global Background Wrapper */
+.app-global-bg {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url('../public/mainpagebox/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: rgba(255, 255, 255, 0.9);
+    z-index: 0;
+}
+
+.app-global-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}

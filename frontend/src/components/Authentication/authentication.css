@@ -14,10 +14,10 @@
 }
 
 .main_authentication {
-    background: url('../../assestes/authentication/background.jpg') !important;
+    /* background: url('../../assestes/authentication/background.jpg') !important;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; */
     filter: brightness(0.9);
     font-weight: 300 !important;
     width: 100% !important;

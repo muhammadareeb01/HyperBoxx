@@ -1,6 +1,6 @@
 .referral_main {
     width: 100%;
-    background-color: #15191c;
+    /* background-color: #15191c; */
     padding: 20px 0px;
     /* height: 100vh; */
     padding-bottom: 200px;
@@ -89,7 +89,7 @@
     justify-content: space-between;
     margin: auto;
     width: 90%;
-    background-color: #15191c;
+    /* background-color: #15191c; */
 }
 
 .referral_div2 {
@@ -114,7 +114,7 @@
     width: calc(90% - 10px);
     /* width: 90%; */
     margin: 3% auto;
-    background-color: #15191c;
+    /* background-color: #15191c; */
 }
 
 .referral_div3>div {
@@ -127,7 +127,7 @@
     margin: auto;
     width: 90%;
     margin: 3% auto;
-    background-color: #15191c;
+    /* background-color: #15191c; */
 }
 
 
