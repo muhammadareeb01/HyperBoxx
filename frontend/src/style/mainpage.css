@@ -56,16 +56,22 @@
 
 .btn-all-mystery-box,
 .btn-most-popular {
-    padding: 10px 25px;
-    border: none;
-    font-size: 12px;
-    background-color: rgba(0, 0, 0, 0.4);
+    padding: 16px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
     color: white;
-    font-family: PoppinsLight;
-    border-radius: 8px 100px;
-    transition: 1.0s all;
-    cursor: pointer; /* Add pointer cursor */
-    position: relative; /* Ensure z-index works */
+    font-family: 'Poppins', sans-serif;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 5px; /* Add some space between the buttons */
 }
 
 .btn-select-box {
@@ -86,9 +92,16 @@
 }
 
 /* Add hover effect for better feedback */
-.btn-select-box:hover,
 .btn-all-mystery-box:hover,
 .btn-most-popular:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-select-box:hover {
      background-color: rgba(255, 255, 255, 0.9);
     transition: 0.5s all; /* Faster transition for snappier feel */
     font-weight: bold;
@@ -117,20 +130,8 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     
-    /* Glowing Text Animation */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    animation: glowPulse 3s ease-in-out infinite alternate;
-}
-
-@keyframes glowPulse {
-    0% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        transform: scale(1);
-    }
-    100% {
-        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.4);
-        transform: scale(1.02);
-    }
+    /* Slight Static Glow */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 .flex-box-div {
@@ -163,49 +164,62 @@
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: inline-block;
+    width: 60px;
+    height: 60px;
     position: relative;
-    border: 3px solid;
-    border-color: #FFF #FFF transparent transparent;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+    animation: spin 2s linear infinite;
 }
-.loader::after,
-.loader::before {
-    content: '';  
-    box-sizing: border-box;
+
+.loader::before, .loader::after {
+    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    border: 3px solid;
-    border-color: transparent transparent #FF3D00 #FF3D00;
-    width: 40px;
-    height: 40px;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     border-radius: 50%;
-    box-sizing: border-box;
-    animation: rotationBack 0.5s linear infinite;
-    transform-origin: center center;
+    border: 3px solid transparent;
+    border-top-color: #ff192a;
+    border-bottom-color: #ff192a;
+    animation: spin 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 25, 42, 0.8));
 }
-.loader::before {
-    width: 32px;
-    height: 32px;
-    border-color: #FFF #FFF transparent transparent;
-    animation: rotation 1.5s linear infinite;
+
+.loader::after {
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+    animation: spinReverse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
 }
-    
-@keyframes rotation {
+
+.loader-container h5 {
+    color: white !important;
+    margin-top: 30px !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    animation: pulseText 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-} 
-@keyframes rotationBack {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
+}
+
+@keyframes spinReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.5; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+    50% { opacity: 1; text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+    100% { opacity: 0.5; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
 }
 
 /* Responsive Breakpoints */

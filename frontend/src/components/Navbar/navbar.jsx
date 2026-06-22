@@ -176,7 +176,7 @@ function Navbar() {
                                 }}
                                 title="Log Out"
                             >
-                                <div className='IconContainer' style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'transparent' }}>
+                                <div className='IconContainer' style={{ width: '100%', height: '100%', borderRadius: '50%', background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                     <FontAwesomeIcon 
                                         icon={faSignOutAlt} 
                                         className='iconmoney' 

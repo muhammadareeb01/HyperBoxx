@@ -1,13 +1,13 @@
 import './privacy.css'
+import PageHeading from '../PageHeading/PageHeading';
+
 function PrivacyPolicy() {
     return (
         <>
             <div className="privacy_policy_main">
                 {/* <div className="border"> */}
                 <div className="tos_sub_main">
-                    <div>
-                        <h1 className=' policy_head'> Privacy Policy</h1>
-                    </div>
+                    <PageHeading title="Privacy Policy" />
                     <div>
                         <h2 className='privacy-head-2'>
                             INTRODUCTION

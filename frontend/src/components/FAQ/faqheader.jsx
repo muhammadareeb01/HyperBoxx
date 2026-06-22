@@ -1,13 +1,12 @@
 import React from "react";
 import './faq.css'
+import PageHeading from '../PageHeading/PageHeading';
+
 function FaqHeader() {
     return (
         <>
             <div className="faq_head_div">
-                <h1 className="faqhead">
-                    FREQUENTLY ASKED QUESTIONS
-                </h1>
-
+                <PageHeading title="FREQUENTLY ASKED QUESTIONS" />
             </div>
             <div>
                 <p className="faqpara">

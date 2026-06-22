@@ -14,12 +14,12 @@
 }
 
 .footer_main {
-
   display: flex;
   justify-content: center;
-
+  flex-wrap: wrap;
+  gap: 15px;
   background-color: #1f2122;
-
+  padding: 0 15px;
 }
 
 .footer {
@@ -32,16 +32,14 @@
   background-color: #1f2122;
 }
 
-.footer_main div {
-
-  margin: 0px 7px;
-
+.footer_main > div {
+  /* using gap instead of margin for better wrap support */
 }
 
 /* icons */
 .light-button button.bt {
   position: relative;
-  height: 150px;
+  height: 110px;
   display: flex;
   align-items: flex-end;
   outline: none;
@@ -239,17 +237,18 @@
 .footer_main2 {
   display: flex;
   justify-content: center;
-
+  flex-wrap: wrap;
+  gap: 20px;
   background-color: #1f2122;
-  margin-top: 3%;
-
-
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 0 15px;
 }
 
 .footer_main2 div {
-  margin: 0px 15px;
   color: white;
   opacity: 0.6;
+  text-align: center;
 }
 
 .footer_main2 div p {

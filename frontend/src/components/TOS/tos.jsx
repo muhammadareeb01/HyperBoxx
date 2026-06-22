@@ -1,23 +1,16 @@
 import React from "react";
-import { useEffect } from "react";
 import './tos.css'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import tosData from '../../utils/tos_data.json';
+import PageHeading from '../PageHeading/PageHeading';
 
 function TOS() {
-    useEffect(() => {
-        AOS.init({ duration: 1200 });
-    }, []);
 
     return (
         <>
             <div className="tos_main">
                 {/* <div className="border"> */}
                     <div className="tos_sub_main">
-                        <div >
-                            <h2 className="tos_head" data-aos="fade-up">TERMS OF SERVICE </h2>
-                        </div>
+                        <PageHeading title="TERMS OF SERVICE" />
 
                         <div className="service_explain_top">
                             <h3 className="tosquestion">
@@ -33,7 +26,7 @@ function TOS() {
                                 tosData.explanation.map((content, index) => {
                                     return (
                                         <>
-                                            <div className="service_explain" data-aos="fade-right">
+                                            <div className="service_explain">
                                                 <div>
                                                     <h3 className="tosquestion"> <span className='tosnumber'> {content.id}  </span>
 

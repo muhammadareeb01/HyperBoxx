@@ -100,7 +100,7 @@ function Footer() {
 
 
                 <div className="footer_para ">
-                    <p className="para2"> 2020-2023. All right reserved.</p>
+                    <p className="para2"> 2020-2026. All right reserved.</p>
                 </div>
             </div>
         </>

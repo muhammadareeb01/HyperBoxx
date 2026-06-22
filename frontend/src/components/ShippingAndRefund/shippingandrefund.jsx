@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { FaExchangeAlt, FaBox, FaHandHoldingUsd } from 'react-icons/fa';
 import './shippingandrefund.css'
+import PageHeading from '../PageHeading/PageHeading';
+
 function ShippingAndRefund() {
     const returnItems = [
         {
@@ -70,10 +72,7 @@ function ShippingAndRefund() {
         <>
             <div className="ship_refund_main">
                 <div className="ship_refund_sub_main">
-                    <div>
-
-                        <h1 className=' ship_refund_head'> Shipping And Refund</h1>
-                    </div>
+                    <PageHeading title="Shipping And Refund" />
                     <div>
 
                         <p className='ship_refund_para'>
@@ -84,16 +83,16 @@ function ShippingAndRefund() {
                     <div className="ship_refund_para2" ref={paraRef}>
                         <p className='ship_refund_para'>
                             Our Return Policy covers the following types of return situations:
-
-                            <ul>
-                                {returnItems.map((item, index) => (
-                                    <li key={index}>
-                                        {item.icon && <span className='icon_'>{item.icon}</span>}
-                                        {item.text}
-                                    </li>
-                                ))}
-                            </ul>
                         </p>
+
+                        <ul className="refund-list">
+                            {returnItems.map((item, index) => (
+                                <li key={index}>
+                                    {item.icon && <span className='icon_'>{item.icon}</span>}
+                                    <span className='li_text'>{item.text}</span>
+                                </li>
+                            ))}
+                        </ul>
                         <p className='ship_refund_para'>
                             We aim to make your shopping experience with Hyboxes as easy and trustworthy as possible. If you have any questions or concerns, please contact our support team at support@hyboxes.com.
                         </p>

@@ -3,10 +3,6 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import "./faq.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
-
 const Accordion = ({ question, answer, border, id }) => {
   const [isActive, setIsActive] = useState(false);
   const borderColors = border.split(" ");
@@ -15,17 +11,13 @@ const Accordion = ({ question, answer, border, id }) => {
     boxShadow: `inset 10px   0px 20px rgba(${borderColors[0]}, ${borderColors[1]}, ${borderColors[2]}, 0.3)`,
   };
 
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
   return (
-    <div className="accordion-item" style={style} data-aos="fade-right">
+    <div className="accordion-item" style={style}>
       <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
         <div className="question">
-          <h3>
-            {" "}
-            <span className="faqnumber"> {id} </span>{" "}
-            <span style={{ marginLeft: "10px" }}>{question} </span>
+          <h3 style={{ display: 'flex', alignItems: 'flex-start' }}>
+            <span className="faqnumber"> {id} </span>
+            <span style={{ marginLeft: "15px", flex: 1, lineHeight: "1.4" }}>{question}</span>
           </h3>
         </div>
         {isActive ? (
@@ -40,11 +32,13 @@ const Accordion = ({ question, answer, border, id }) => {
           </div>
         )}
       </div>
-      {isActive && (
-        <div className="answer">
-          <h3> {answer} </h3>
+      <div className={`accordion-content ${isActive ? "open" : ""}`}>
+        <div className="answer-wrapper">
+          <div className="answer">
+            <h3> {answer} </h3>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

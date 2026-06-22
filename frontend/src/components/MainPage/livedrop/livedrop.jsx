@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './livedrop.css'; 
 import { getFirestore, collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 
+import { Link } from 'react-router-dom';
+
 const LiveDrop = () => {
     const [recentBoxes, setRecentBoxes] = useState([]);
     const db = getFirestore();
@@ -61,19 +63,21 @@ const LiveDrop = () => {
                 <div className="marquee-wrapper">
                     <div className="marquee-content">
                         {marqueeItems.map((box, index) => (
-                            <div key={`${box.id}-${index}`} className={`single-card ${getCardColor(index)}`}>
-                                {/* IMAGE (Icon on Left) */}
-                                <img 
-                                    src={box.image} 
-                                    className="tip" 
-                                    alt={box.title} 
-                                />
-                                
-                                {/* TITLE (Text on Right) */}
-                                <p className="second-text">
-                                    {box.title}
-                                </p>
-                            </div>
+                            <Link to={`/box/${box.id}`} key={`${box.id}-${index}`} style={{ textDecoration: 'none' }}>
+                                <div className={`single-card ${getCardColor(index)}`}>
+                                    {/* IMAGE (Icon on Left) */}
+                                    <img 
+                                        src={box.image} 
+                                        className="tip" 
+                                        alt={box.title} 
+                                    />
+                                    
+                                    {/* TITLE (Text on Right) */}
+                                    <p className="second-text">
+                                        {box.title}
+                                    </p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

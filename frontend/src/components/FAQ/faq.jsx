@@ -5,9 +5,6 @@ import React, { useState } from "react";
 import FaqHeader from "./faqheader";
 import Accordion from './accordation';
 import contactpic from '../../assestes/faq/customer support.png'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
 import './faq.css'
 // import Footer from "../Footer/footer";
 
@@ -64,32 +61,26 @@ function FAQ() {
 
   ])
 
-  useEffect(() => {
-    AOS.init({ duration: 1200 });
-  }, []);
-
   return (
 
     <div className="faq_main">
       <div>
         <FaqHeader />
       </div>
-      <div className="accordion" data-aos="fade-right" >
+      <div className="accordion" >
         {accordionData.map(({ question, answer, border, id }) => (
           <Accordion question={question} answer={answer} border={border} id={id} />
         ))}
       </div>
-      <div className="gap_div">
-        <hr />
-      </div>
+      <div className="modern-divider"></div>
       <div className="contact_faq">
-        <div className="contact_div1" data-aos="fade-right">
-          <img src={contactpic} className="contactlogo" alt="" />
+        <div className="contact_div1">
+          <img src={contactpic} className="contactlogo" alt="Customer Support" />
         </div>
-        <div className="contact_div2" data-aos="fade-left">
-          <h2 className="contact_heading"> CONTACT US</h2>
+        <div className="contact_div2">
+          <h2 className="contact_heading">Need Help?</h2>
           <p className="contact_para">
-            Have any question ? We are here to help you...
+            Have any questions or need assistance? We are here to help you 24/7.
           </p>
           <button className="learn-more button">
             <span className="circle" aria-hidden="true">
@@ -97,7 +88,6 @@ function FAQ() {
             </span>
             <span className="button-text">support@hyboxes.com</span>
           </button>
-
         </div>
       </div>
 

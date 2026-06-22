@@ -33,117 +33,119 @@ function App() {
         {!isPlainPage && <Navbar />}
       </div>
 
-      <Routes>
-        <Route path="/signup" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Signup />
-          </ProtectedRoute>
-        } />
+      <div style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/signup" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Signup />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/" element={
-          <ProtectedRoute requireAdmin={false}>
-            <MainPage />
-          </ProtectedRoute>
-        } />
+          <Route path="/" element={
+            <ProtectedRoute requireAdmin={false}>
+              <MainPage />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/login" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Login />
-          </ProtectedRoute>
-        } />
+          <Route path="/login" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Login />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/profile" element={
-          <ProtectedRoute requireAdmin={false}>
-            <MyProfile />
-          </ProtectedRoute>
-        } />
+          <Route path="/profile" element={
+            <ProtectedRoute requireAdmin={false}>
+              <MyProfile />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/termsofservice" element={
-          <ProtectedRoute requireAdmin={false}>
-            <TOS />
-          </ProtectedRoute>
-        } />
+          <Route path="/termsofservice" element={
+            <ProtectedRoute requireAdmin={false}>
+              <TOS />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/affilate" element={
-          <ProtectedRoute requireAdmin={false}>
-            <ShippingAndRefund />
-          </ProtectedRoute>
-        } />
+          <Route path="/affilate" element={
+            <ProtectedRoute requireAdmin={false}>
+              <ShippingAndRefund />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/freebox" element={
-          <ProtectedRoute requireAdmin={false}>
-            <FreeBox />
-          </ProtectedRoute>
-        } />
+          <Route path="/freebox" element={
+            <ProtectedRoute requireAdmin={false}>
+              <FreeBox />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/deposit" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Deposit />
-          </ProtectedRoute>
-        } />
+          <Route path="/deposit" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Deposit />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/profile/deposit" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Deposit />
-          </ProtectedRoute>
-        } />
+          <Route path="/profile/deposit" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Deposit />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/faq" element={
-          <ProtectedRoute requireAdmin={false}>
-            <FAQ />
-          </ProtectedRoute>
-        } />
+          <Route path="/faq" element={
+            <ProtectedRoute requireAdmin={false}>
+              <FAQ />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/privacypolicy" element={
-          <ProtectedRoute requireAdmin={false}>
-            <PrivacyPolicy />
-          </ProtectedRoute>
-        } />
+          <Route path="/privacypolicy" element={
+            <ProtectedRoute requireAdmin={false}>
+              <PrivacyPolicy />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/shiipingAndrefund" element={
-          <ProtectedRoute requireAdmin={false}>
-            <ShippingAndRefund />
-          </ProtectedRoute>
-        } />
+          <Route path="/shiipingAndrefund" element={
+            <ProtectedRoute requireAdmin={false}>
+              <ShippingAndRefund />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/box/:id" element={
-          <ProtectedRoute requireAdmin={false}>
-            <BoxDetails />
-          </ProtectedRoute>
-        } />
+          <Route path="/box/:id" element={
+            <ProtectedRoute requireAdmin={false}>
+              <BoxDetails />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/contact" element={
-          <ProtectedRoute requireAdmin={false}>
-            <FAQ />
-          </ProtectedRoute>
-        } />
+          <Route path="/contact" element={
+            <ProtectedRoute requireAdmin={false}>
+              <FAQ />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/support" element={
-          <ProtectedRoute requireAdmin={false}>
-            <FAQ />
-          </ProtectedRoute>
-        } />
+          <Route path="/support" element={
+            <ProtectedRoute requireAdmin={false}>
+              <FAQ />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/authentication" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Authentication />
-          </ProtectedRoute>
-        } />
+          <Route path="/authentication" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Authentication />
+            </ProtectedRoute>
+          } />
 
-        <Route path="/referral" element={
-          <ProtectedRoute requireAdmin={false}>
-            <Referral />
-          </ProtectedRoute>
-        } />
-        <Route 
-          path="/admin" 
-          element={
-            // <ProtectedRoute requireAdmin={true}>
-              <AdminDashboard />
-            // </ProtectedRoute>
-        }/>
-        {/* <Route path="/admin" element={<AdminDashboard />} /> */}
-      </Routes>
+          <Route path="/referral" element={
+            <ProtectedRoute requireAdmin={false}>
+              <Referral />
+            </ProtectedRoute>
+          } />
+          <Route 
+            path="/admin" 
+            element={
+              // <ProtectedRoute requireAdmin={true}>
+                <AdminDashboard />
+              // </ProtectedRoute>
+          }/>
+          {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+        </Routes>
+      </div>
 
       {!isPlainPage && <Footer />}
     </div>

@@ -1,18 +1,18 @@
 .custom-dropdown-container {
     position: relative;
-    width: 200px;
+    width: 220px;
     font-family: 'Poppins', sans-serif;
-    z-index: 100; /* Ensure it stays above other content */
+    z-index: 99999; /* Ensure it stays above other content */
 }
 
 .dropdown-header {
-    padding: 12px 20px;
+    padding: 16px 30px;
     font-size: 13px;
     font-weight: 600;
     color: white;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px; /* Pill shape */
     cursor: pointer;
     display: flex;
@@ -20,6 +20,7 @@
     align-items: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
 }
 
 .dropdown-header:hover {
@@ -49,14 +50,15 @@
     top: 115%; /* Slight gap */
     left: 0;
     width: 100%;
-    background: #1a1a1a;  /* Solid dark background for readability */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    background: #15191c; /* Solid dark elegant background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
     overflow: hidden;
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
     list-style: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+    z-index: 99999;
     
     /* Animation Initial State */
     opacity: 0;
@@ -72,12 +74,15 @@
 }
 
 .dropdown-item {
-    padding: 12px 20px;
-    font-size: 13px;
-    color: #ccc;
+    padding: 15px 20px;
+    font-size: 14px; 
+    color: rgba(255, 255, 255, 0.8); /* White text */
     cursor: pointer;
     transition: all 0.2s ease;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-align: center; /* Center text */
 }
 
 .dropdown-item:last-child {
@@ -86,12 +91,14 @@
 
 .dropdown-item:hover {
     background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    padding-left: 25px; /* Slight slide effect */
+    color: #ffffff;
+    transform: scale(1.02); /* Slight scale instead of slide since it's centered */
 }
 
 .dropdown-item.selected {
-    background: linear-gradient(90deg, #d90429, #ef233c); /* Brand red */
-    color: white;
-    font-weight: 700;
+    background: rgba(239, 68, 68, 0.2); /* Clean red tint background */
+    color: #ffffff; /* Bright white text for selected */
+    font-weight: 800; /* Bolder to stand out */
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(239, 68, 68, 0.5);
 }

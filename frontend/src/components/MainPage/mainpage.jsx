@@ -12,7 +12,6 @@ export default function MainPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOrder, setSortOrder] = useState('high-low'); // Default sort
-    
     // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 20;
@@ -86,7 +85,7 @@ export default function MainPage() {
                 </div>
 
                 {/* 4. Display Logic */}
-                <div className="main-page-div" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', padding: '20px' }}>
+                <div className="main-page-div" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', gap: '20px', paddingLeft: '7%', paddingRight: '9.5%', paddingTop: '20px', paddingBottom: '20px' }}>
                     
                     {loading && (
                         <div className="loader-container">
